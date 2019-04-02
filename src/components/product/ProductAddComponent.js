@@ -4,7 +4,8 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 require('styles/product/ProductAdd.css');
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Glyphicon} from 'react-bootstrap';
+import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ProductAddComponent extends React.Component {
     handleClick = () => {
@@ -76,8 +77,8 @@ class ProductAddComponent extends React.Component {
           <div className = "productadd-component">
             <Grid>
                 <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
-                <Button onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> 
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
+                <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
                 </ButtonToolbar>
                 <FormGroup controlId = "formName">
                     <Label> Name </Label> <FormControl type = "text"
@@ -127,7 +128,7 @@ class ProductAddComponent extends React.Component {
                 </FormGroup>
                 <ButtonToolbar>
                 <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/> </Button> <Button
-                onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> </ButtonToolbar>
+                onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
             </Grid>
             </div>
         );
