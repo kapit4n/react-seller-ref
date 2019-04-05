@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 //import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './components/Main';
 import About from './components/AboutComponent';
@@ -36,31 +37,30 @@ const history = createBrowserHistory()
 
 ReactDOM.render((
   <Router  history={history}>
-  <Switch>
-     <Route path = "/" component = {App}>
-     </Route>
-        <Route path = "home" component = {Home} />
-        <Route path = "about" component = {About} />
-        <Route path = "contact" component = {Contact} />
-        <Route path = "customer-list" component = {CustomerList} />
-        <Route path = "customer-show/:id" component = {CustomerShow} />
-        <Route path = "customer-add" component = {CustomerAdd} />
-        <Route path = "customer-edit/:id" component = {CustomerEdit} />
-        <Route path = "product-list" component = {ProductList} />
-        <Route path = "product-show/:id" component = {ProductShow} />
-        <Route path = "product-add" component = {ProductAdd} />
-        <Route path = "product-edit/:id" component = {ProductEdit} />
-        <Route path = "vendor-list" component = {VendorList} />
-        <Route path = "vendor-show/:id" component = {VendorShow} />
-        <Route path = "vendor-add" component = {VendorAdd} />
-        <Route path = "vendor-edit/:id" component = {VendorEdit} />
-        <Route path = "cart-current" component = {CartCurrent} />
-        <Route path = "cart-list" component = {CartList} />
-        <Route path = "cart-show/:id" component = {CartShow} />
-        <Route path = "cart-add" component = {CartAdd} />
-        <Route path = "cart-edit/:id" component = {CartEdit} />
-        <Route path = "login" component = {Login} />
-  </Switch>
+    <Switch>
+      <Route path = "/" component = {Home} />
+      <Route path = "home" component = {Home} />
+      <Route path = "about" component = {About} />
+      <Route path = "contact" component = {Contact} />
+      <Route path = "customer-list" component = {CustomerList} />
+      <Route path = "customer-show/:id" component = {CustomerShow} />
+      <Route path = "customer-add" component = {CustomerAdd} />
+      <Route path = "customer-edit/:id" component = {CustomerEdit} />
+      <Route path = "product-list" component = {ProductList} />
+      <Route path = "product-show/:id" component = {ProductShow} />
+      <Route path = "product-add" component = {ProductAdd} />
+      <Route path = "product-edit/:id" component = {ProductEdit} />
+      <Route path = "vendor-list" component = {VendorList} />
+      <Route path = "vendor-show/:id" component = {VendorShow} />
+      <Route path = "vendor-add" component = {VendorAdd} />
+      <Route path = "vendor-edit/:id" component = {VendorEdit} />
+      <Route path = "cart-current" component = {CartCurrent} />
+      <Route path = "cart-list" component = {CartList} />
+      <Route path = "cart-show/:id" component = {CartShow} />
+      <Route path = "cart-add" component = {CartAdd} />
+      <Route path = "cart-edit/:id" component = {CartEdit} />
+      <Route path = "login" component = {Login} />
+    </Switch>
   </Router>
 ), document.getElementById('root'))
 
