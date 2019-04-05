@@ -5,6 +5,30 @@ import { Nav, Navbar, NavDropdown, Form, Image, Button, Container, Row, Col, For
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/App.css';
 //import { withRouter } from 'react-router-dom'
+//import { Router, Route, Link } from 'react-router'
+import { Route, Link } from 'react-router-dom';
+
+import About from './AboutComponent';
+import Contact from './ContactComponent';
+import Home from './HomeComponent';
+import ProductList from './product/ProductListComponent';
+import ProductShow from './product/ProductShowComponent';
+import ProductAdd from './product/ProductAddComponent';
+import ProductEdit from './product/ProductEditComponent';
+import VendorList from './vendor/VendorListComponent';
+import VendorShow from './vendor/VendorShowComponent';
+import VendorAdd from './vendor/VendorAddComponent';
+import VendorEdit from './vendor/VendorEditComponent';
+import CartCurrent from './cart/CartCurrentComponent';
+import CartList from './cart/CartListComponent';
+import CartShow from './cart/CartShowComponent';
+import CartAdd from './cart/CartAddComponent';
+import CartEdit from './cart/CartEditComponent';
+import Login from './user/LoginComponent';
+import CustomerAdd from './customer/CustomerAddComponent';
+import CustomerList from './customer/CustomerListComponent';
+import CustomerEdit from './customer/CustomerEditComponent';
+import CustomerShow from './customer/CustomerShowComponent';
 
 require('normalize.css/normalize.css');
 
@@ -52,7 +76,7 @@ class App extends React.Component {
           <Nav>
             <Nav.Item href={"/home"}>Home</Nav.Item>
             <NavDropdown title="Products"  id="basic-nav-dropdown">
-              <Nav.Item href="/product-list">List</Nav.Item>
+              <Nav.Item ><Link to="/product-list">List</Link></Nav.Item>
               <Nav.Item href="/product-add">New</Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Customers"  id="basic-nav-dropdown">
@@ -80,7 +104,29 @@ class App extends React.Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-       {this.props.children}
+       
+      <Route path = "/home" component = {Home} />
+      <Route path = "/about" component = {About} />
+      <Route path = "/contact" component = {Contact} />
+      <Route path = "/customer-list" component = {CustomerList} />
+      <Route path = "/customer-show/:id" component = {CustomerShow} />
+      <Route path = "/customer-add" component = {CustomerAdd} />
+      <Route path = "/customer-edit/:id" component = {CustomerEdit} />
+      <Route path = "/product-list" component = {ProductList} />
+      <Route path = "/product-show/:id" component = {ProductShow} />
+      <Route path = "/product-add" component = {ProductAdd} />
+      <Route path = "/product-edit/:id" component = {ProductEdit} />
+      <Route path = "/vendor-list" component = {VendorList} />
+      <Route path = "/vendor-show/:id" component = {VendorShow} />
+      <Route path = "/vendor-add" component = {VendorAdd} />
+      <Route path = "/vendor-edit/:id" component = {VendorEdit} />
+      <Route path = "/cart-current" component = {CartCurrent} />
+      <Route path = "/cart-list" component = {CartList} />
+      <Route path = "/cart-show/:id" component = {CartShow} />
+      <Route path = "/cart-add" component = {CartAdd} />
+      <Route path = "/cart-edit/:id" component = {CartEdit} />
+      <Route path = "/login" component = {Login} />
+
       </div>
       )
   }
