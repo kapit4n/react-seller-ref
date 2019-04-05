@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Row, Container, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
+import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/customer/CustomerShow.css');
@@ -39,16 +39,15 @@ class CustomerShowComponent extends React.Component {
     return (
       <div className="customershow-component">
         <Container>
-          <Row>
-            <Row>
+          <Media>
+            <Media>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://mindtouch.com/resources/wp-content/uploads/sites/2/2014/08/happy-customers.png" alt="Image"/>
-            </Row>
-            <Row>
+            </Media>
+            <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }>
-                <FontAwesomeIcon icon="edit" />
                 <FontAwesomeIcon icon="edit"/></Button>
-                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /> </Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="times" /> </Button>
               </ButtonToolbar>
               <span>Name: {this.state.customer.name}</span>
               <ListGroup>
@@ -56,8 +55,8 @@ class CustomerShowComponent extends React.Component {
                 <ListGroupItem><h4 style={{display: 'inline'}}>Address: </h4>{this.state.customer.address}</ListGroupItem>
               </ListGroup>
               <p>{this.state.customer.description}</p>
-            </Row>
-          </Row>
+            </Media.Body>
+          </Media>
         </Container>
       </div>
     );
