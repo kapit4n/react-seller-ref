@@ -5,6 +5,30 @@ import { Nav, Navbar, NavDropdown, Form, Image, Button, Container, Row, Col, For
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/App.css';
 //import { withRouter } from 'react-router-dom'
+//import { Router, Route, Link } from 'react-router'
+import { Route, Link } from 'react-router-dom';
+
+import About from './AboutComponent';
+import Contact from './ContactComponent';
+import Home from './HomeComponent';
+import ProductList from './product/ProductListComponent';
+import ProductShow from './product/ProductShowComponent';
+import ProductAdd from './product/ProductAddComponent';
+import ProductEdit from './product/ProductEditComponent';
+import VendorList from './vendor/VendorListComponent';
+import VendorShow from './vendor/VendorShowComponent';
+import VendorAdd from './vendor/VendorAddComponent';
+import VendorEdit from './vendor/VendorEditComponent';
+import CartCurrent from './cart/CartCurrentComponent';
+import CartList from './cart/CartListComponent';
+import CartShow from './cart/CartShowComponent';
+import CartAdd from './cart/CartAddComponent';
+import CartEdit from './cart/CartEditComponent';
+import Login from './user/LoginComponent';
+import CustomerAdd from './customer/CustomerAddComponent';
+import CustomerList from './customer/CustomerListComponent';
+import CustomerEdit from './customer/CustomerEditComponent';
+import CustomerShow from './customer/CustomerShowComponent';
 
 require('normalize.css/normalize.css');
 
@@ -50,20 +74,20 @@ class App extends React.Component {
           <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Item href={"/home"}>Home</Nav.Item>
+            <Nav.Item> <Nav.Link href={"/home"}>Home</Nav.Link></Nav.Item>
             <NavDropdown title="Products"  id="basic-nav-dropdown">
-              <Nav.Item href="/product-list">List</Nav.Item>
-              <Nav.Item href="/product-add">New</Nav.Item>
+              <Nav.Item ><Nav.Link href="/product-list">List</Nav.Link></Nav.Item>
+              <Nav.Item> <Nav.Link href="/product-add">New </Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Customers"  id="basic-nav-dropdown">
-              <Nav.Item href="/customer-list">List</Nav.Item>
-              <Nav.Item href="/customer-add">New</Nav.Item>
+              <Nav.Item> <Nav.Link href="/customer-list">List</Nav.Link></Nav.Item>
+              <Nav.Item> <Nav.Link href="/customer-add">New</Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Orders"  id="basic-nav-dropdown">
-              <Nav.Item href="/cart-list">List</Nav.Item>
+              <Nav.Item> <Nav.Link href="/cart-list">List</Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Vendor"  id="basic-nav-dropdown">
-              <Nav.Item href="/vendor-list">List</Nav.Item>
+              <Nav.Item> <Nav.Link href="/vendor-list">List</Nav.Link></Nav.Item>
             </NavDropdown>
 
           </Nav>
@@ -75,12 +99,34 @@ class App extends React.Component {
           <Button type="submit" onClick={()=>this.search()} >Search</Button>
           </Form>
           <Nav>
-            <Nav.Item  href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Item>
-            <Nav.Item  href="/login">Login</Nav.Item>
+            <Nav.Item> <Nav.Link href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Link></Nav.Item>
+            <Nav.Item> <Nav.Link href="/login">Login</Nav.Link></Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-       {this.props.children}
+       
+      <Route path = "/home" component = {Home} />
+      <Route path = "/about" component = {About} />
+      <Route path = "/contact" component = {Contact} />
+      <Route path = "/customer-list" component = {CustomerList} />
+      <Route path = "/customer-show/:id" component = {CustomerShow} />
+      <Route path = "/customer-add" component = {CustomerAdd} />
+      <Route path = "/customer-edit/:id" component = {CustomerEdit} />
+      <Route path = "/product-list" component = {ProductList} />
+      <Route path = "/product-show/:id" component = {ProductShow} />
+      <Route path = "/product-add" component = {ProductAdd} />
+      <Route path = "/product-edit/:id" component = {ProductEdit} />
+      <Route path = "/vendor-list" component = {VendorList} />
+      <Route path = "/vendor-show/:id" component = {VendorShow} />
+      <Route path = "/vendor-add" component = {VendorAdd} />
+      <Route path = "/vendor-edit/:id" component = {VendorEdit} />
+      <Route path = "/cart-current" component = {CartCurrent} />
+      <Route path = "/cart-list" component = {CartList} />
+      <Route path = "/cart-show/:id" component = {CartShow} />
+      <Route path = "/cart-add" component = {CartAdd} />
+      <Route path = "/cart-edit/:id" component = {CartEdit} />
+      <Route path = "/login" component = {Login} />
+
       </div>
       )
   }
