@@ -5,6 +5,9 @@ import { withRouter } from 'react-router-dom';
   
 import { Button, ButtonToolbar, FormGroup,  FormControl, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle } from '@fortawesome/fontawesome-free-solid';
+
+
 require('../../styles/product/ProductAdd.css');
 
 class ProductAddComponent extends React.Component {
@@ -77,8 +80,8 @@ class ProductAddComponent extends React.Component {
           <div className = "productadd-component">
             <Container>
                 <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
-                <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
+                    <Button onClick = { this.handleClick }><FontAwesomeIcon icon={"check"} /></Button>
+                    <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
                 </ButtonToolbar>
                 <FormGroup controlId = "formName">
                     <span> Name </span> <FormControl type = "text"
@@ -127,7 +130,7 @@ class ProductAddComponent extends React.Component {
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/> </Button> <Button
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="check"/> </Button> <Button
                 onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
             </Container>
             </div>
