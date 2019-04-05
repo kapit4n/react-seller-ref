@@ -74,20 +74,20 @@ class App extends React.Component {
           <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav>
-            <Nav.Item href={"/home"}>Home</Nav.Item>
+            <Nav.Item> <Nav.Link href={"/home"}>Home</Nav.Link></Nav.Item>
             <NavDropdown title="Products"  id="basic-nav-dropdown">
-              <Nav.Item ><Link to="/product-list">List</Link></Nav.Item>
-              <Nav.Item href="/product-add">New</Nav.Item>
+              <Nav.Item ><Nav.Link href="/product-list">List</Nav.Link></Nav.Item>
+              <Nav.Item> <Nav.Link href="/product-add">New </Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Customers"  id="basic-nav-dropdown">
-              <Nav.Item href="/customer-list">List</Nav.Item>
-              <Nav.Item href="/customer-add">New</Nav.Item>
+              <Nav.Item> <Nav.Link href="/customer-list">List</Nav.Link></Nav.Item>
+              <Nav.Item> <Nav.Link href="/customer-add">New</Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Orders"  id="basic-nav-dropdown">
-              <Nav.Item href="/cart-list">List</Nav.Item>
+              <Nav.Item> <Nav.Link href="/cart-list">List</Nav.Link></Nav.Item>
             </NavDropdown>
             <NavDropdown  title="Vendor"  id="basic-nav-dropdown">
-              <Nav.Item href="/vendor-list">List</Nav.Item>
+              <Nav.Item> <Nav.Link href="/vendor-list">List</Nav.Link></Nav.Item>
             </NavDropdown>
 
           </Nav>
@@ -99,8 +99,8 @@ class App extends React.Component {
           <Button type="submit" onClick={()=>this.search()} >Search</Button>
           </Form>
           <Nav>
-            <Nav.Item  href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Item>
-            <Nav.Item  href="/login">Login</Nav.Item>
+            <Nav.Item> <Nav.Link href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Link></Nav.Item>
+            <Nav.Item> <Nav.Link href="/login">Login</Nav.Link></Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
