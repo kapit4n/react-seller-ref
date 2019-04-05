@@ -2,10 +2,11 @@
 
 import React from 'react';
 
-require('styles/product/ProductShow.css');
-import { browserHistory } from 'react-router';
-import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar, Glyphicon, Modal, Row, FormControl, Col, lLabel, FormGroup, Image} from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Row, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+require('../../styles/product/ProductShow.css');
 class ProductShowComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class ProductShowComponent extends React.Component {
   }
 
   handleClick = () => {
-    browserHistory.push('/product-edit/' + this.state.product.id);
+    this.props.history.push('/product-edit/' + this.state.product.id);
   };
 
   handleAddStock = () => {
@@ -45,7 +46,7 @@ class ProductShowComponent extends React.Component {
       method: 'DELETE',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', }
     }).then((response) => response.json())
-    .then((responseJson) => { browserHistory.push('/product-list');})
+    .then((responseJson) => { this.props.history.push('/product-list');})
     .catch((error) => { console.error(error);});
   };
 
@@ -93,17 +94,17 @@ class ProductShowComponent extends React.Component {
 
     return (
       <div className="productshow-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.product.img} alt="Image"/>
             </Media.Left>
             <Media.Body>
               <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="edit"/></Button>
-                <Button onClick = { this.handleRemove }><Glyphicon glyph="remove"/></Button>
-                <Button onClick = { this.handleAddStock }><Glyphicon glyph="add"/>Add Stock</Button>
-                <Button onClick = { this.handleAddToCart }><Glyphicon glyph="add"/>Add to Cart</Button>
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove"/></Button>
+                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="add"/>Add Stock</Button>
+                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="add"/>Add to Cart</Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.product.name}</Media.Heading>
               <ListGroup>
@@ -114,21 +115,21 @@ class ProductShowComponent extends React.Component {
               <p>{this.state.product.description}</p>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
 
         <Modal show={this.state.show} onHide={closeStock} container={this} aria-labelledby="contained-modal-title">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">Adding to Inventary</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Grid>
-              <Row className="show-grid">
+            <Container>
+              <Row className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
-                  <lLabel> Price: </lLabel>${this.state.product.price} <br />
+                  <lspan> Price: </lspan>${this.state.product.price} <br />
                   <FormGroup controlId="formControlsSelect">
-                  <lLabel>Select Vendor</lLabel>
+                  <lspan>Select Vendor</lspan>
                   <FormControl componentClass="select" placeholder="select" value = { this.state.vendorId }
                             onChange = { this.handleChangeVendorId }>
                   {this.state.vendors.map(function(vendor) {
@@ -138,18 +139,18 @@ class ProductShowComponent extends React.Component {
                   }, this)}
                   </FormControl>
                 </FormGroup>
-                  <lLabel> Current Stock: </lLabel>{this.state.product.stock} <br />
+                  <lspan> Current Stock: </lspan>{this.state.product.stock} <br />
                 <FormGroup controlId = "formCode">
-                    <lLabel>Quantity</lLabel>
+                    <lspan>Quantity</lspan>
                     <FormControl type = "text" placeholder = "Enter quantity"
                     value = { this.state.quantity } onChange = { this.handleChangeQuantity } />
                 </FormGroup>
                 </Col>
               </Row>
-            </Grid>
+            </Container>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveStock}><Glyphicon glyph="ok"/></Button>
+            <Button onClick={saveStock}><FontAwesomeIcon icon="ok"/></Button>
           </Modal.Footer>
         </Modal>
 
@@ -158,25 +159,25 @@ class ProductShowComponent extends React.Component {
             <Modal.Title id="contained-modal-title">Adding to Shopping Cart</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Grid>
-              <Row className="show-grid">
+            <Container>
+              <Row className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
-                  <lLabel> Price: </lLabel>${this.state.product.price} <br />
-                  <lLabel> Stock: </lLabel>{this.state.product.stock} <br />
+                  <lspan> Price: </lspan>${this.state.product.price} <br />
+                  <lspan> Stock: </lspan>{this.state.product.stock} <br />
                   ${this.state.product.description}
                 </Col>
               </Row>
-            </Grid>
+            </Container>
             <FormGroup controlId = "formCode">
-                <lLabel>Quantity</lLabel>
+                <lspan>Quantity</lspan>
                 <FormControl type = "text" placeholder = "Enter quantity"
                 value = { this.state.quantityToCart } onChange = { this.handleChangeQuantityToCart } />
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveCartDialog}><Glyphicon glyph="ok"/></Button>
+            <Button onClick={saveCartDialog}><FontAwesomeIcon icon="ok"/></Button>
           </Modal.Footer>
         </Modal>
 
@@ -191,4 +192,4 @@ ProductShowComponent.displayName = 'ProductProductShowComponent';
 // ProductShowComponent.propTypes = {};
 // ProductShowComponent.defaultProps = {};
 
-export default ProductShowComponent;
+export default withRouter(ProductShowComponent);

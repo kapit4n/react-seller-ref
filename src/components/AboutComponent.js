@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('styles//About.css');
+require('../styles/About.css');
 
 class AboutComponent extends React.Component {
   render() {

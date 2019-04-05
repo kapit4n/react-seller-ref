@@ -1,11 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { browserHistory } from 'react-router';
-
-require('styles/product/ProductAdd.css');
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+  
+import { Button, ButtonToolbar, FormGroup,  FormControl, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require('../../styles/product/ProductAdd.css');
 
 class ProductAddComponent extends React.Component {
     handleClick = () => {
@@ -22,13 +22,13 @@ class ProductAddComponent extends React.Component {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
                 body: JSON.stringify(product)
             }).then((response) => response.json())
-            .then((responseJson) => { browserHistory.push('/product-list'); })
+            .then((responseJson) => { this.props.history.push('/product-list'); })
             .catch((error) => { console.error(error); });
 
     };
 
     handleGoList = () => {
-        browserHistory.push('/product-list');
+        this.props.history.push('/product-list');
     };
 
     constructor() {
@@ -75,48 +75,48 @@ class ProductAddComponent extends React.Component {
     render() {
         return (
           <div className = "productadd-component">
-            <Grid>
+            <Container>
                 <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
                 <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
                 </ButtonToolbar>
                 <FormGroup controlId = "formName">
-                    <Label> Name </Label> <FormControl type = "text"
+                    <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.name }
                     onChange = { this.handleChangeName }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formCode">
-                    <Label> Code </Label> <FormControl type = "text"
+                    <span> Code </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.code }
                     onChange = { this.handleChangeCode }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formPrice">
-                    <Label> Price </Label><FormControl type = "text"
+                    <span> Price </span><FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.price }
                     onChange = { this.handleChangePrice }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formImg">
-                    <Label> Img </Label> <FormControl type = "text"
+                    <span> Img </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.img }
                     onChange = { this.handleChangeImg }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formStock">
-                    <Label> Stock </Label> <FormControl type = "text"
+                    <span> Stock </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.stock }
                     onChange = { this.handleChangeStock }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formDescription">
-                    <Label> Description </Label>
+                    <span> Description </span>
                     <FormControl
                     componentClass="textarea"
                     type = "text"
@@ -127,9 +127,9 @@ class ProductAddComponent extends React.Component {
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/> </Button> <Button
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/> </Button> <Button
                 onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
-            </Grid>
+            </Container>
             </div>
         );
     }
@@ -141,4 +141,4 @@ ProductAddComponent.displayName = 'ProductProductAddComponent';
 // ProductAddComponent.propTypes = {};
 // ProductAddComponent.defaultProps = {};
 
-export default ProductAddComponent;
+export default withRouter(ProductAddComponent);

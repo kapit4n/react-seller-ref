@@ -6,11 +6,12 @@ import {
   ListGroupItem,
   Badge,
   Button,
-  Grid,
-  Glyphicon
+  Container
 } from "react-bootstrap";
 
-require("styles/cart/CartList.css");
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+require("../../styles/cart/CartList.css");
 
 class CartListComponent extends React.Component {
   constructor() {
@@ -57,15 +58,15 @@ class CartListComponent extends React.Component {
   render() {
     return (
       <div className="cartlist-component">
-        <Grid>
+        <Container>
           <ListGroup>
             {this.state.orders.map(order => {
               return <ListGroupItem key={order.id}>
                   <Button bsStyle="info" href={"../cart-show/" + order.id}>
-                    <Glyphicon glyph="folder-open" />{" "}
+                    <FontAwesomeIcon icon="folder-open" />{" "}
                   </Button>
                   <Button onClick={() => this.removeOrder(order.id)} bsStyle="danger">
-                    <Glyphicon glyph="remove" />{" "}
+                    <FontAwesomeIcon icon="remove" />{" "}
                   </Button>
                   {order.description}, customer: {order.customer ? order.customer.name : ""}
                   <Badge>{order.createdDate}</Badge>
@@ -73,7 +74,7 @@ class CartListComponent extends React.Component {
                 </ListGroupItem>;
             })}
           </ListGroup>
-        </Grid>
+        </Container>
       </div>
     );
   }

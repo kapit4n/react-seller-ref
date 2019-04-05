@@ -1,10 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { browserHistory } from 'react-router';
-import {FieldGroup, Label, FormControl, FormGroup, HelpBlock, Grid, Glyphicon, ButtonToolbar, Button} from 'react-bootstrap'
+import { withRouter } from 'react-router-dom';import {FieldGroup,  FormControl, FormGroup, HelpBlock, Container, ButtonToolbar, Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/vendor/VendorAdd.css');
+require('../../styles/vendor/VendorAdd.css');
 
 /**
  * Component to register a new vendor for the application
@@ -52,7 +52,7 @@ class VendorAddComponent extends React.Component {
               body: JSON.stringify(product)
           }).then((response) => response.json())
           .then((responseJson) => { 
-            browserHistory.push('/vendor-list'); 
+            this.props.history.push('/vendor-list'); 
           }).catch((error) => { console.error(error); });
   };
 
@@ -60,36 +60,37 @@ class VendorAddComponent extends React.Component {
    * Redirects to vendor list page
    */
   handleGoList = () => {
-      browserHistory.push('/vendor-list');
+      this.props.history.push('/vendor-list');
   };
 
   /** Renders the vendor add component */
   render() {
     return (
       <div className="vendoradd-component">
-        <Grid>
+        <Container>
           <ButtonToolbar>
-          <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
-          <Button onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> 
+          <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
+          <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
           </ButtonToolbar>
           <FormGroup controlId = "formName">
-              <Label> Name </Label> <FormControl type = "text"
+              <span> Name </span> <FormControl type = "text"
               placeholder = "Enter Vendor Name"
               value = { this.state.name }
               onChange = { this.handleChangeName }
               />
           </FormGroup>                
           <FormGroup controlId = "formAddress">
-              <Label> Address </Label><FormControl type = "text"
+              <span> Address </span><FormControl type = "text"
               placeholder = "Enter Address"
               value = { this.state.address }
               onChange = { this.handleChangeAddress }
               />
           </FormGroup>
           <ButtonToolbar>
-          <Button onClick = { this.handleOk }><Glyphicon glyph="ok"/> </Button> <Button
-          onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> </ButtonToolbar>
-        </Grid>
+            <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /> </Button> 
+            <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /> </Button>
+          </ButtonToolbar>
+        </Container>
       </div>
     );
   }
@@ -100,4 +101,4 @@ VendorAddComponent.displayName = 'VendorVendorAddComponent';
 // VendorAddComponent.propTypes = {};
 // VendorAddComponent.defaultProps = {};
 
-export default VendorAddComponent;
+export default withRouter(VendorAddComponent);

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('styles/vendor/VendorLineItem.css');
+require('../../styles/vendor/VendorLineItem.css');
 
 class VendorLineItemComponent extends React.Component {
   constructor(props) {

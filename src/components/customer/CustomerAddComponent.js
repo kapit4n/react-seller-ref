@@ -1,10 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { browserHistory } from 'react-router';
-import {FieldGroup, Label, FormControl, FormGroup, HelpBlock, Grid, Glyphicon, ButtonToolbar, Button} from 'react-bootstrap'
+import { withRouter } from 'react-router-dom';import {FieldGroup,  FormControl, FormGroup, HelpBlock, Container, ButtonToolbar, Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/customer/CustomerAdd.css');
+require('../../styles/customer/CustomerAdd.css');
 
 class CustomerAddComponent extends React.Component {
   constructor() {
@@ -40,32 +40,32 @@ class CustomerAddComponent extends React.Component {
               headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
               body: JSON.stringify(product)
           }).then((response) => response.json())
-          .then((responseJson) => { browserHistory.push('/customer-list'); })
+          .then((responseJson) => { this.props.history.push('/customer-list'); })
           .catch((error) => { console.error(error); });
 
   };
 
   handleGoList = () => {
-      browserHistory.push('/customer-list');
+      this.props.history.push('/customer-list');
   };
 
   render() {
     return (
       <div className="customeradd-component">
-        <Grid>
+        <Container>
                 <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
-                <Button onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> 
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/></Button>
+                <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list"/></Button> 
                 </ButtonToolbar>
                 <FormGroup controlId = "formName">
-                    <Label> Name </Label> <FormControl type = "text"
+                    <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter Customer Name"
                     value = { this.state.name }
                     onChange = { this.handleChangeName }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formBudget">
-                    <Label> Budget </Label>
+                    <span> Budget </span>
                     <FormControl type = "text"
                     placeholder = "Enter Budget"
                     value = { this.state.budget }
@@ -73,16 +73,16 @@ class CustomerAddComponent extends React.Component {
                     />
                 </FormGroup>
                 <FormGroup controlId = "formAddress">
-                    <Label> Address </Label><FormControl type = "text"
+                    <span> Address </span><FormControl type = "text"
                     placeholder = "Enter Address"
                     value = { this.state.address }
                     onChange = { this.handleChangeAddress }
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                <Button onClick = { this.handleOk }><Glyphicon glyph="ok"/> </Button> <Button
-                onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> </ButtonToolbar>
-            </Grid>
+                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok"/> </Button> <Button
+                onClick = { this.handleGoList }><FontAwesomeIcon icon="list"/></Button> </ButtonToolbar>
+            </Container>
       </div>
     );
   }
@@ -94,4 +94,4 @@ CustomerAddComponent.displayName = 'CustomerCustomerAddComponent';
 // CustomerAddComponent.propTypes = {};
 // CustomerAddComponent.defaultProps = {};
 
-export default CustomerAddComponent;
+export default withRouter(CustomerAddComponent);

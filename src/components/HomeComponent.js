@@ -1,9 +1,10 @@
 'use strict';
 
-require('styles//Home.css');
 import React from 'react';
-import {Grid, Row, Col, Image, Button, ButtonToolbar, Glyphicon, Modal, FormGroup, Label, FormControl} from 'react-bootstrap';
+import {Container, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+require('../styles/Home.css');
 /**
  * Component that displays the shopping products
  */
@@ -55,7 +56,7 @@ class HomeComponent extends React.Component {
    */
   componentDidMount() {
     var filter = "";
-    if (this.props.location.query.search) {
+    if (this.props.location.query && this.props.location.query.search) {
       filter = 'filter[where][or][0][name][regexp]=/' + this.props.location.query.search + '/i&';
     }
     fetch(this.productURL + '?' + filter + 'access_token=' + this.access_token)
@@ -91,54 +92,54 @@ class HomeComponent extends React.Component {
       fontSize: 25
     };
 
-    // shopping card grid padding
-    const cartGridPadding = {
+    // shopping card Container padding
+    const cartContainerPadding = {
       paddingBottom: 10, paddingTop: 10
     };
 
     return (
       <div className="home-component">
-        <Grid>
-          <Row className="show-grid">
+        <Container>
+          <Row className="show-Container">
             {this.state.products.map(function (product) {
-              return <Col key={product.id} xs={6} md={4} height={350} style={cartGridPadding}>
+              return <Col key={product.id} xs={6} md={4} height={350} style={cartContainerPadding}>
                 <div style={cartImageContainer}>
                   <Image src={product.img} thumbnail />
                 </div>
                 <Button bsStyle="link" href={'product-show/' + product.id}>{product.name}</Button><br/>
-                <Label style={priceStyle}>${product.price}</Label>
+                <span style={priceStyle}>${product.price}</span>
                 <ButtonToolbar>
-                  <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><Glyphicon glyph="shopping-cart"/> Add to Cart </Button>
+                  <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><FontAwesomeIcon icon={"shopping-cart"}/> Add to Cart </Button>
                 </ButtonToolbar>
               </Col>;
             }, this)}
           </Row>
-        </Grid>
+        </Container>
 
         <Modal show={this.state.show} onHide={closeItemOnCart} container={this} aria-labelledby="contained-modal-title">
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">Adding to Shopping Cart</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Grid>
-              <Row className="show-grid">
+            <Container>
+              <Row className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
-                  <Label> Price: </Label>${this.state.product.price} <br />
-                  <Label> Stock: </Label>{this.state.product.stock} <br />
+                  <span> Price: </span>${this.state.product.price} <br />
+                  <span> Stock: </span>{this.state.product.stock} <br />
                   ${this.state.product.description}
                 </Col>
               </Row>
-            </Grid>
+            </Container>
             <FormGroup controlId = "formCode">
-                <Label>Quantity</Label>
+                <span>Quantity</span>
                 <FormControl type = "text" placeholder = "Enter quantity"
                 value = { this.state.quantity } onChange = { this.handleChangeQuantity } />
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveItemOnCart}><Glyphicon glyph="ok"/></Button>
+            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="ok"/></Button>
           </Modal.Footer>
         </Modal>
 

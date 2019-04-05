@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('styles/cart/CartAdd.css');
+require('../../styles/cart/CartAdd.css');
 
 class CartAddComponent extends React.Component {
   render() {

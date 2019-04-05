@@ -1,12 +1,13 @@
 'use strict';
 
 import React from 'react';
-import { Table, Image, Button, Grid, Row, Col, Glyphicon} from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-require('styles/vendor/VendorList.css');
+import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import VendorLineItemComponent from './VendorLineItemComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/vendor/VendorList.css');
+require('../../styles/vendor/VendorList.css');
+require('../../styles/vendor/VendorList.css');
 
 class VendorListComponent extends React.Component {
 	constructor() {
@@ -23,14 +24,14 @@ class VendorListComponent extends React.Component {
   }
 
   handleAdd = () => {
-    browserHistory.push('/vendor-add/');
+    this.props.history.push('/vendor-add/');
   };
 
   render() {
     return (
       <div>
-        <Grid>
-          <Button onClick = { this.handleAdd }><Glyphicon glyph="plus"/></Button>
+        <Container>
+          <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
           <Table striped bordered condensed hover>
             <thead>
@@ -46,7 +47,7 @@ class VendorListComponent extends React.Component {
               }
             </tbody>
           </Table>
-          </Grid>
+          </Container>
       </div>
     );
   }
@@ -58,4 +59,4 @@ VendorListComponent.displayName = 'VendorVendorListComponent';
 // VendorListComponent.propTypes = {};
 // VendorListComponent.defaultProps = {};
 
-export default VendorListComponent;
+export default withRouter(VendorListComponent);

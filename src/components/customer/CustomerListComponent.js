@@ -1,10 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { Table, Image, Button, Grid, Row, Col, Glyphicon} from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-require('styles/customer/CustomerList.css');
+import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
 import CustomerLineItemComponent from './CustomerLineItemComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require('../../styles/customer/CustomerList.css');
 
 
 class CustomerListComponent extends React.Component {
@@ -31,7 +32,7 @@ class CustomerListComponent extends React.Component {
   }
 
   handleAdd = () => {
-    browserHistory.push("/customer-add/");
+    this.props.history.push("/customer-add/");
   };
 
   removeCustomer = id => {
@@ -49,9 +50,9 @@ class CustomerListComponent extends React.Component {
   render() {
     return (
       <div>
-        <Grid>
+        <Container>
           <Button onClick={this.handleAdd}>
-            <Glyphicon glyph="plus" />
+            <FontAwesomeIcon icon="plus" />
           </Button>
           <img
             id="preview"
@@ -83,14 +84,14 @@ class CustomerListComponent extends React.Component {
                     <td>{customer.address}</td>
                     <td>
                       <Button onClick={()=>this.removeCustomer(customer.id)} bsStyle="danger">
-                        <Glyphicon glyph="remove" />
+                        <FontAwesomeIcon icon="remove" />
                       </Button>
                     </td>
                   </tr>;
               })}
             </tbody>
           </Table>
-        </Grid>
+        </Container>
       </div>
     );
   }
@@ -102,4 +103,4 @@ CustomerListComponent.displayName = 'CustomerCustomerListComponent';
 // CustomerListComponent.propTypes = {};
 // CustomerListComponent.defaultProps = {};
 
-export default CustomerListComponent;
+export default withRouter(CustomerListComponent);

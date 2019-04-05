@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-require('styles/product/ProductEdit.css');
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Media, Glyphicon } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { Button, ButtonToolbar, FormGroup,  FormControl, Container, Media } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require('../../styles/product/ProductEdit.css');
 
 class ProductEditComponent extends React.Component {
 
@@ -37,7 +37,7 @@ class ProductEditComponent extends React.Component {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
                 body: JSON.stringify(product)
             }).then((response) => response.json())
-            .then((responseJson) => { browserHistory.push('/product-show/' + this.state.id);})
+            .then((responseJson) => { this.props.history.push('/product-show/' + this.state.id);})
             .catch((error) => { console.error(error); });
     };
 
@@ -76,66 +76,66 @@ class ProductEditComponent extends React.Component {
     render() {
         return (
       <div className="productedit-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.img} alt="Image"/>
             </Media.Left>
             <Media.Body>
-             <Grid>
+             <Container>
               <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/></Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.name}</Media.Heading>
                 <FormGroup controlId = "formName">
-                    <Label> Name </Label> <FormControl type = "text"
+                    <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.name }
                     onChange = { this.handleChangeName }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formCode">
-                    <Label> Code </Label> <FormControl type = "text"
+                    <span> Code </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.code }
                     onChange = { this.handleChangeCode }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formPrice">
-                    <Label> Price </Label> <FormControl type = "text"
+                    <span> Price </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.price }
                     onChange = { this.handleChangePrice }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formImg">
-                    <Label> Img </Label> <FormControl type = "text"
+                    <span> Img </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.img }
                     onChange = { this.handleChangeImg }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formStock">
-                    <Label> Stock </Label> <FormControl type = "text"
+                    <span> Stock </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.stock }
                     onChange = { this.handleChangeStock }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formDescription">
-                    <Label> Description </Label> <FormControl type = "text"
+                    <span> Description </span> <FormControl type = "text"
                     placeholder = "Description" componentClass="textarea"
                     value = { this.state.description }
                     onChange = { this.handleChangeDescription }
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                  <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
+                  <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/></Button>
                 </ButtonToolbar>
-            </Grid>
+            </Container>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
       </div>
         );
     }
@@ -147,4 +147,4 @@ ProductEditComponent.displayName = 'ProductProductEditComponent';
 // ProductEditComponent.propTypes = {};
 // ProductEditComponent.defaultProps = {};
 
-export default ProductEditComponent;
+export default withRouter(ProductEditComponent);

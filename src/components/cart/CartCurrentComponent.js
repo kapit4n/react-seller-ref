@@ -2,21 +2,20 @@
 
 import React from "react";
 
-require("styles/cart/CartCurrent.css");
 import {
   Table,
   Image,
   Button,
-  Grid,
+  Container,
   Row,
   Col,
-  Glyphicon,
   Modal,
   FormGroup,
-  Label,
   FormControl,
   Alert
 } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require("../../styles/cart/CartCurrent.css");
 
 class CartCurrentComponent extends React.Component {
   constructor() {
@@ -257,9 +256,9 @@ class CartCurrentComponent extends React.Component {
           {" "}
           <a href={"cart-list/"}>list</a>{" "}
         </div>
-        <Grid>
+        <Container>
         <FormGroup controlId="formControlsSelect">
-          <Label>Select Customer</Label>
+          <span>Select Customer</span>
           <FormControl componentClass="select" placeholder="select" value = { this.state.customerId }
                     onChange = { this.handleChangeCustomerId }>
           {this.state.customers.map(function(customer) {
@@ -304,11 +303,12 @@ class CartCurrentComponent extends React.Component {
                     <td>
                       <Button onClick={() => this.removeItem(detail.id)}>
                         {" "}
-                        <Glyphicon glyph="remove" />{" "}
+                        <FontAwesomeIcon icon="remove" />
+                        {" "}
                       </Button>
                       <Button onClick={() => this.handleEditItem(detail)}>
                         {" "}
-                        <Glyphicon glyph="edit" />{" "}
+                        <FontAwesomeIcon icon="edit" />{" "}
                       </Button>
                     </td>
                   </tr>
@@ -318,12 +318,12 @@ class CartCurrentComponent extends React.Component {
           </Table>
           <Button onClick={() => this.clearCart()}>
             {" "}
-            <Glyphicon glyph="cleaning" /> Clear
+            <FontAwesomeIcon icon="cleaning" /> Clear
           </Button>
           <Button onClick={() => this.submitCart()}>
-            <Glyphicon glyph="send" /> Submit Cart{" "}
+            <FontAwesomeIcon icon="send" /> Submit Cart{" "}
           </Button>
-        </Grid>
+        </Container>
         <Modal
           show={this.state.show}
           onHide={close}
@@ -336,8 +336,8 @@ class CartCurrentComponent extends React.Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Grid>
-              <Row className="show-grid">
+            <Container>
+              <Row className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.detailEdit.product.name}</h2>
                   <br />
@@ -347,16 +347,16 @@ class CartCurrentComponent extends React.Component {
                     thumbnail
                   />
                   <br />
-                  <Label> Price: </Label>${this.state.detailEdit.product.price}{" "}
+                  <span> Price: </span>${this.state.detailEdit.product.price}{" "}
                   <br />
-                  <Label> Stock: </Label>
+                  <span> Stock: </span>
                   {this.state.detailEdit.product.stock} <br />
                   ${this.state.detailEdit.product.description}
                 </Col>
               </Row>
-            </Grid>
+            </Container>
             <FormGroup controlId="formCode">
-              <Label>Quantity</Label>
+              <span>Quantity</span>
               <FormControl
                 type="text"
                 placeholder="Enter quantity"
@@ -367,7 +367,7 @@ class CartCurrentComponent extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={close}>
-              <Glyphicon glyph="ok" />
+              <FontAwesomeIcon icon="ok" />
             </Button>
           </Modal.Footer>
         </Modal>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('styles/product/ProductRelated.css');
+require('../../styles/product/ProductRelated.css');
 
 class ProductRelatedComponent extends React.Component {
   render() {
