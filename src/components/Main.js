@@ -1,10 +1,11 @@
-require('normalize.css/normalize.css');
-require('styles/App.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Nav, NavItem, Navbar, MenuItem, NavDropdown, Table, Image, Button, Grid, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Table, Image, Button, Container, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+require('normalize.css/normalize.css');
+require('styles/App.css');
 
 let yeomanImage = require('../images/yeoman.png');
 
@@ -52,20 +53,20 @@ class AppComponent extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <MenuItem eventKey={1} href={"/home"}>Home</MenuItem>
+            <Nav.Item eventKey={1} href={"/home"}>Home</Nav.Item>
             <NavDropdown eventKey={2} title="Products"  id="basic-nav-dropdown">
-              <MenuItem eventKey={2.1} href="/product-list">List</MenuItem>
-              <MenuItem eventKey={2.1} href="/product-add">New</MenuItem>
+              <Nav.Item eventKey={2.1} href="/product-list">List</Nav.Item>
+              <Nav.Item eventKey={2.1} href="/product-add">New</Nav.Item>
             </NavDropdown>
             <NavDropdown eventKey={3} title="Customers"  id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1} href="/customer-list">List</MenuItem>
-              <MenuItem eventKey={3.1} href="/customer-add">New</MenuItem>
+              <Nav.Item eventKey={3.1} href="/customer-list">List</Nav.Item>
+              <Nav.Item eventKey={3.1} href="/customer-add">New</Nav.Item>
             </NavDropdown>
             <NavDropdown eventKey={4} title="Orders"  id="basic-nav-dropdown">
-              <MenuItem eventKey={4.1} href="/cart-list">List</MenuItem>
+              <Nav.Item eventKey={4.1} href="/cart-list">List</Nav.Item>
             </NavDropdown>
             <NavDropdown eventKey={5} title="Vendor"  id="basic-nav-dropdown">
-              <MenuItem eventKey={5.1} href="/vendor-list">List</MenuItem>
+              <Nav.Item eventKey={5.1} href="/vendor-list">List</Nav.Item>
             </NavDropdown>
 
           </Nav>
@@ -77,8 +78,8 @@ class AppComponent extends React.Component {
           <Button type="submit" onClick={()=>this.search()} >Search</Button>
           </Navbar.Form>
           <Nav pullRight>
-            <MenuItem eventKey={1} href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</MenuItem>
-            <MenuItem eventKey={2} href="/login">Login</MenuItem>
+            <Nav.Item eventKey={1} href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Item>
+            <Nav.Item eventKey={2} href="/login">Login</Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

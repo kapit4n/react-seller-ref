@@ -29,8 +29,13 @@ import CustomerShow from './components/customer/CustomerShowComponent';
 
 import { Router, Route } from 'react-router'
 
+//import { Router } from "react-router";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory()
+
 ReactDOM.render((
-  <Router>
+  <Router  history={history}>
      <Route path = "/" component = {App}>
         <Route path = "home" component = {Home} />
         <Route path = "about" component = {About} />

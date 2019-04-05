@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter } from 'react-router-dom'
 
 require('styles/customer/CustomerShow.css');
 
@@ -17,7 +17,7 @@ class CustomerShowComponent extends React.Component {
   }
 
   handleClick = () => {
-    browserHistory.push('/customer-edit/' + this.state.customer.id);
+    this.props.history.push('/customer-edit/' + this.state.customer.id);
   };
 
   handleRemove = () => {
@@ -25,7 +25,7 @@ class CustomerShowComponent extends React.Component {
       method: 'DELETE',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', }
     }).then((response) => response.json())
-    .then((responseJson) => { browserHistory.push('/customer-list');})
+    .then((responseJson) => { this.props.history.push('/customer-list');})
     .catch((error) => { console.error(error);});
   };
 
@@ -39,7 +39,7 @@ class CustomerShowComponent extends React.Component {
   render() {
     return (
       <div className="customershow-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://mindtouch.com/resources/wp-content/uploads/sites/2/2014/08/happy-customers.png" alt="Image"/>
@@ -48,7 +48,7 @@ class CustomerShowComponent extends React.Component {
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }>
                 <FontAwesomeIcon icon="edit" />
-                <Glyphicon glyph="edit"/></Button>
+                <FontAwesomeIcon icon="edit"/></Button>
                 <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /> </Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.customer.name}</Media.Heading>
@@ -59,7 +59,7 @@ class CustomerShowComponent extends React.Component {
               <p>{this.state.customer.description}</p>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
       </div>
     );
   }
@@ -71,4 +71,4 @@ CustomerShowComponent.displayName = 'CustomerCustomerShowComponent';
 // CustomerShowComponent.propTypes = {};
 // CustomerShowComponent.defaultProps = {};
 
-export default CustomerShowComponent;
+export default withRouter(CustomerShowComponent);

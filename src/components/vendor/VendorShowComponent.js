@@ -1,9 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/vendor/VendorShow.css');
 
@@ -17,7 +16,7 @@ class VendorShowComponent extends React.Component {
   }
 
   handleClick = () => {
-    browserHistory.push('/vendor-edit/' + this.state.vendor.id);
+    this.props.history.push('/vendor-edit/' + this.state.vendor.id);
   };
 
   handleRemove = () => {
@@ -25,7 +24,7 @@ class VendorShowComponent extends React.Component {
       method: 'DELETE',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', }
     }).then((response) => response.json())
-    .then((responseJson) => { browserHistory.push('/vendor-list');})
+    .then((responseJson) => { this.props.history.push('/vendor-list');})
     .catch((error) => { console.error(error);});
   };
 
@@ -39,7 +38,7 @@ class VendorShowComponent extends React.Component {
   render() {
     return (
       <div className="vendorshow-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image"/>
@@ -56,7 +55,7 @@ class VendorShowComponent extends React.Component {
               <p>{this.state.vendor.description}</p>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
       </div>
     );
   }
@@ -68,4 +67,4 @@ VendorShowComponent.displayName = 'VendorVendorShowComponent';
 // VendorShowComponent.propTypes = {};
 // VendorShowComponent.defaultProps = {};
 
-export default VendorShowComponent;
+export default withRouter(VendorShowComponent);

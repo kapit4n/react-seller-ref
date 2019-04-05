@@ -6,7 +6,7 @@ import {
   ListGroupItem,
   Badge,
   Button,
-  Grid
+  Container
 } from "react-bootstrap";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -58,7 +58,7 @@ class CartListComponent extends React.Component {
   render() {
     return (
       <div className="cartlist-component">
-        <Grid>
+        <Container>
           <ListGroup>
             {this.state.orders.map(order => {
               return <ListGroupItem key={order.id}>
@@ -74,7 +74,7 @@ class CartListComponent extends React.Component {
                 </ListGroupItem>;
             })}
           </ListGroup>
-        </Grid>
+        </Container>
       </div>
     );
   }

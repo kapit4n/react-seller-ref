@@ -1,9 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Media } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, ButtonToolbar, FormGroup,  FormControl, Container, Media } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/customer/CustomerEdit.css');
 
@@ -28,7 +27,7 @@ class CustomerEditComponent extends React.Component {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
                 body: JSON.stringify(customer)
             }).then((response) => response.json())
-            .then((responseJson) => { browserHistory.push('/customer-show/' + this.state.id);})
+            .then((responseJson) => { this.props.history.push('/customer-show/' + this.state.id);})
             .catch((error) => { console.error(error); });
     };
 
@@ -55,33 +54,33 @@ class CustomerEditComponent extends React.Component {
     render() {
         return (
       <div className="customeredit-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.img} alt="Image"/>
             </Media.Left>
             <Media.Body>
-             <Grid>
+             <Container>
               <ButtonToolbar>
                 <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok"/></Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.name}</Media.Heading>
                 <FormGroup controlId = "formName">
-                    <Label> Name </Label> <FormControl type = "text"
+                    <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.name }
                     onChange = { this.handleChangeName }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formBudget">
-                    <Label> Budget </Label> <FormControl type = "text"
+                    <span> Budget </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.budget }
                     onChange = { this.handleChangeBudget }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formAddress">
-                    <Label> Address </Label> <FormControl type = "text"
+                    <span> Address </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.address }
                     onChange = { this.handleChangeAddress }
@@ -90,10 +89,10 @@ class CustomerEditComponent extends React.Component {
                 <ButtonToolbar>
                   <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok"/></Button>
                 </ButtonToolbar>
-            </Grid>
+            </Container>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
       </div>
         );
     }
@@ -106,4 +105,4 @@ CustomerEditComponent.displayName = 'CustomerCustomerEditComponent';
 // CustomerEditComponent.propTypes = {};
 // CustomerEditComponent.defaultProps = {};
 
-export default CustomerEditComponent;
+export default withRouter(CustomerEditComponent);

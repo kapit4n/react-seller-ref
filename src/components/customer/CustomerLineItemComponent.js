@@ -6,13 +6,11 @@ import {
   ListGroupItem,
   Badge,
   Button,
-  Grid,
-  Glyphicon
+  Container
 } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
+
 require('styles/customer/CustomerLineItem.css');
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 
 class CustomerLineItemComponent extends React.Component {
   constructor(props) {
@@ -33,7 +31,7 @@ class CustomerLineItemComponent extends React.Component {
         <td>{this.state.customer.address}</td>
         <td>
           {" "}
-        <Button onClick={() => props.handleClick(order.id)} bsStyle="danger">
+        <Button onClick={() => this.props.handleClick(this.order.id)} bsStyle="danger">
             <FontAwesomeIcon icon="remove" />
             {" "}
           </Button>

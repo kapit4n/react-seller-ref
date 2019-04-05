@@ -1,8 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Media } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { Button, ButtonToolbar, FormGroup,  FormControl, Container, Media } from 'react-bootstrap';
+import {
+  withRouter
+} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/vendor/VendorEdit.css');
@@ -37,7 +39,7 @@ class VendorEditComponent extends React.Component {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
                 body: JSON.stringify(vendor)
             }).then((response) => response.json())
-            .then((responseJson) => { browserHistory.push('/vendor-show/' + this.state.id);})
+            .then((responseJson) => { this.props.history.push('/vendor-show/' + this.state.id);})
             .catch((error) => { console.error(error); });
     };
 
@@ -66,26 +68,26 @@ class VendorEditComponent extends React.Component {
     render() {
         return (
       <div className="vendoredit-component">
-        <Grid>
+        <Container>
           <Media>
             <Media.Left>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image"/>
             </Media.Left>
             <Media.Body>
-             <Grid>
+             <Container>
               <ButtonToolbar>
                 <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.name}</Media.Heading>
                 <FormGroup controlId = "formName">
-                    <Label> Name </Label> <FormControl type = "text"
+                    <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.name }
                     onChange = { this.handleChangeName }
                     />
                 </FormGroup>
                 <FormGroup controlId = "formAddress">
-                    <Label> Address </Label> <FormControl type = "text"
+                    <span> Address </span> <FormControl type = "text"
                     placeholder = "Enter text"
                     value = { this.state.address }
                     onChange = { this.handleChangeAddress }
@@ -94,10 +96,10 @@ class VendorEditComponent extends React.Component {
                 <ButtonToolbar>
                   <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
                 </ButtonToolbar>
-            </Grid>
+            </Container>
             </Media.Body>
           </Media>
-        </Grid>
+        </Container>
       </div>
         );
     }
@@ -109,4 +111,4 @@ VendorEditComponent.displayName = 'VendorVendorEditComponent';
 // VendorEditComponent.propTypes = {};
 // VendorEditComponent.defaultProps = {};
 
-export default VendorEditComponent;
+export default withRouter(VendorEditComponent);

@@ -2,12 +2,11 @@
 
 import React from 'react';
 import $ from 'jquery'
-require('styles/product/ProductList.css');
-import { Table, Image, Button, Grid, Row, Col } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-import ProductLineItemComponent from './ProductLineItemComponent';
+import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';import ProductLineItemComponent from './ProductLineItemComponent';
 import { product } from '../../api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require('styles/product/ProductList.css');
 
 class ProductListComponent extends React.Component {
   constructor() {
@@ -30,7 +29,7 @@ class ProductListComponent extends React.Component {
   }
 
   handleAdd = () => {
-    browserHistory.push('/product-add/');
+    this.props.history.push('/product-add/');
   };
 
   addPreviewEvent() {
@@ -46,7 +45,7 @@ class ProductListComponent extends React.Component {
   render() {
     return (
       <div>
-        <Grid>
+        <Container>
           <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
           <Table striped bordered condensed hover>
@@ -64,7 +63,7 @@ class ProductListComponent extends React.Component {
               }
             </tbody>
           </Table>
-          </Grid>
+          </Container>
       </div>
     );
   }
@@ -76,4 +75,4 @@ ProductListComponent.displayName = 'ProductProductListComponent';
 // ProductListComponent.propTypes = {};
 // ProductListComponent.defaultProps = {};
 
-export default ProductListComponent;
+export default withRouter(ProductListComponent);
