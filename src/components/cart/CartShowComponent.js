@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { ListGroup, ListGroupItem, Badge, Image, Button, Container, Row, ButtonToolbar} from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Badge, Image, Button, Container, Media, ButtonToolbar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/cart/CartShow.css');
@@ -29,14 +29,14 @@ class CartShowComponent extends React.Component {
       <div className="cartshow-component">
 
         <Container>
-          <Row>
-            <Row>
+          <Media>
+            <Media>
 
-            </Row>
-            <Row>
+            </Media>
+            <Media.Body>
               <ButtonToolbar>
-                 <Button onClick = {()=>this.deliverOrder(this.state.order.id)}> <FontAwesomeIcon icon="send"/> Deliver</Button>
-                  <Button onClick = {()=>this.cancelOrder(this.state.order.id)}> <FontAwesomeIcon icon="remove-sign"/> Remove</Button>
+                 <Button onClick = {()=>this.deliverOrder(this.state.order.id)}> <FontAwesomeIcon icon="paper-plane"/> Deliver</Button>
+                  <Button onClick = {()=>this.cancelOrder(this.state.order.id)}> <FontAwesomeIcon icon="times"/> Remove</Button>
               </ButtonToolbar>
               <span>Order Details</span>
               <ListGroup>
@@ -53,8 +53,8 @@ class CartShowComponent extends React.Component {
                   })
                 }
               </ListGroup>
-            </Row>
-          </Row>
+            </Media.Body>
+          </Media>
         </Container>
       </div>
     );
