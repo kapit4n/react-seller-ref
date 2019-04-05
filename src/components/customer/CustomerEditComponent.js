@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, ButtonToolbar, FormGroup,  FormControl, Container, Media } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/customer/CustomerEdit.css');
+require('../../styles/customer/CustomerEdit.css');
 
 class CustomerEditComponent extends React.Component {
     constructor(props) {

@@ -4,7 +4,7 @@ import React from 'react';
 import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/vendor/VendorShow.css');
+require('../../styles/vendor/VendorShow.css');
 
 class VendorShowComponent extends React.Component {
   constructor(props) {

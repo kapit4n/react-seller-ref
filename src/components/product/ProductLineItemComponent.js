@@ -3,7 +3,7 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 
-require('styles/product/ProductLineItem.css');
+require('../../styles/product/ProductLineItem.css');
 
 class ProductLineItemComponent extends React.Component {
   

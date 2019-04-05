@@ -6,8 +6,8 @@ import { withRouter } from 'react-router-dom';
 import VendorLineItemComponent from './VendorLineItemComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/vendor/VendorList.css');
-require('styles/vendor/VendorList.css');
+require('../../styles/vendor/VendorList.css');
+require('../../styles/vendor/VendorList.css');
 
 class VendorListComponent extends React.Component {
 	constructor() {

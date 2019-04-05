@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Row, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/product/ProductShow.css');
+require('../../styles/product/ProductShow.css');
 class ProductShowComponent extends React.Component {
   constructor(props) {
     super(props);

@@ -8,9 +8,9 @@ import {
   Button,
   Container
 } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-require('styles/customer/CustomerLineItem.css');
+require('../../styles/customer/CustomerLineItem.css');
 
 class CustomerLineItemComponent extends React.Component {
   constructor(props) {

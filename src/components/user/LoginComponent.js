@@ -3,7 +3,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 
-require('styles/user/Login.css');
+require('../../styles/user/Login.css');
 
 class LoginComponent extends React.Component {
   render() {

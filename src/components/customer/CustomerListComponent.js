@@ -5,7 +5,7 @@ import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import CustomerLineItemComponent from './CustomerLineItemComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-require('styles/customer/CustomerList.css');
+require('../../styles/customer/CustomerList.css');
 
 
 class CustomerListComponent extends React.Component {

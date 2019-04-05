@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/vendor/VendorEdit.css');
+require('../../styles/vendor/VendorEdit.css');
 
 /**
  * Component to edit the vendor information

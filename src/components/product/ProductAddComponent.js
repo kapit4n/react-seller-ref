@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
   
 import { Button, ButtonToolbar, FormGroup,  FormControl, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-require('styles/product/ProductAdd.css');
+require('../../styles/product/ProductAdd.css');
 
 class ProductAddComponent extends React.Component {
     handleClick = () => {

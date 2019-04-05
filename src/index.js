@@ -27,7 +27,7 @@ import CustomerList from './components/customer/CustomerListComponent';
 import CustomerEdit from './components/customer/CustomerEditComponent';
 import CustomerShow from './components/customer/CustomerShowComponent';
 
-import { Router, Route } from 'react-router'
+import { Router, Route, Switch } from 'react-router'
 
 //import { Router } from "react-router";
 import { createBrowserHistory } from "history";
@@ -36,7 +36,9 @@ const history = createBrowserHistory()
 
 ReactDOM.render((
   <Router  history={history}>
+  <Switch>
      <Route path = "/" component = {App}>
+     </Route>
         <Route path = "home" component = {Home} />
         <Route path = "about" component = {About} />
         <Route path = "contact" component = {Contact} />
@@ -58,7 +60,7 @@ ReactDOM.render((
         <Route path = "cart-add" component = {CartAdd} />
         <Route path = "cart-edit/:id" component = {CartEdit} />
         <Route path = "login" component = {Login} />
-     </Route>
+  </Switch>
   </Router>
 ), document.getElementById('root'))
 

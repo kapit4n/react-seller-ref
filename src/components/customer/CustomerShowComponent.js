@@ -5,7 +5,7 @@ import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar} from
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { withRouter } from 'react-router-dom'
 
-require('styles/customer/CustomerShow.css');
+require('../../styles/customer/CustomerShow.css');
 
 class CustomerShowComponent extends React.Component {
   constructor(props) {

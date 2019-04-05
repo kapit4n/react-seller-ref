@@ -4,9 +4,8 @@ import React from 'react';
 import $ from 'jquery'
 import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';import ProductLineItemComponent from './ProductLineItemComponent';
-import { product } from '../../api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-require('styles/product/ProductList.css');
+require('../../styles/product/ProductList.css');
 
 class ProductListComponent extends React.Component {
   constructor() {

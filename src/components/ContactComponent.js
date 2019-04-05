@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-require('styles//Contact.css');
+require('../styles/Contact.css');
 
 class ContactComponent extends React.Component {
   render() {

@@ -4,7 +4,7 @@ import React from 'react';
 import { ListGroup, ListGroupItem, Badge, Image, Button, Container, Media, ButtonToolbar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/cart/CartShow.css');
+require('../../styles/cart/CartShow.css');
 
 class CartShowComponent extends React.Component {
   constructor(props) {

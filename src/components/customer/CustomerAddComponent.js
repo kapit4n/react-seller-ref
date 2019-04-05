@@ -4,7 +4,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';import {FieldGroup,  FormControl, FormGroup, HelpBlock, Container, ButtonToolbar, Button} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles/customer/CustomerAdd.css');
+require('../../styles/customer/CustomerAdd.css');
 
 class CustomerAddComponent extends React.Component {
   constructor() {

@@ -11,7 +11,7 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require("styles/cart/CartList.css");
+require("../../styles/cart/CartList.css");
 
 class CartListComponent extends React.Component {
   constructor() {

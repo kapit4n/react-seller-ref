@@ -15,7 +15,7 @@ import {
   Alert
 } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-require("styles/cart/CartCurrent.css");
+require("../../styles/cart/CartCurrent.css");
 
 class CartCurrentComponent extends React.Component {
   constructor() {

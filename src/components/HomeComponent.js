@@ -4,7 +4,7 @@ import React from 'react';
 import {Container, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-require('styles//Home.css');
+require('../styles/Home.css');
 /**
  * Component that displays the shopping products
  */
