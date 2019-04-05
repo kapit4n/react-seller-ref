@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { withRouter } from 'react-router-dom';
-import { Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Row, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
+import { Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Media, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/product/ProductShow.css');
@@ -98,11 +98,11 @@ class ProductShowComponent extends React.Component {
     return (
       <div className="productshow-component">
         <Container>
-          <Row>
-            <Col>
+          <Media>
+            <Media>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.product.img} alt="Image"/>
-            </Col>
-            <Col>
+            </Media>
+            <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
                 <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove"/></Button>
@@ -116,8 +116,8 @@ class ProductShowComponent extends React.Component {
                 <ListGroupItem><h4 style={{display: 'inline'}}>Price: </h4>{this.state.product.price}</ListGroupItem>
               </ListGroup>
               <p>{this.state.product.description}</p>
-            </Col>
-          </Row>
+            </Media.Body>
+          </Media>
         </Container>
 
         <Modal show={this.state.show} onHide={closeStock} container={this} aria-labelledby="contained-modal-title">
@@ -126,7 +126,7 @@ class ProductShowComponent extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <Row className="show-Container">
+              <Media className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
@@ -149,7 +149,7 @@ class ProductShowComponent extends React.Component {
                     value = { this.state.quantity } onChange = { this.handleChangeQuantity } />
                 </FormGroup>
                 </Col>
-              </Row>
+              </Media>
             </Container>
           </Modal.Body>
           <Modal.Footer>
@@ -163,7 +163,7 @@ class ProductShowComponent extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <Row className="show-Container">
+              <Media className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
@@ -171,7 +171,7 @@ class ProductShowComponent extends React.Component {
                   <lspan> Stock: </lspan>{this.state.product.stock} <br />
                   ${this.state.product.description}
                 </Col>
-              </Row>
+              </Media>
             </Container>
             <FormGroup controlId = "formCode">
                 <lspan>Quantity</lspan>
