@@ -84,7 +84,7 @@ class CustomerListComponent extends React.Component {
                     <td>{customer.address}</td>
                     <td>
                       <Button onClick={()=>this.removeCustomer(customer.id)} bsStyle="danger">
-                        <FontAwesomeIcon icon="remove" />
+                        <FontAwesomeIcon icon="times" />
                       </Button>
                     </td>
                   </tr>;
