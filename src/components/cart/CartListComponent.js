@@ -6,9 +6,10 @@ import {
   ListGroupItem,
   Badge,
   Button,
-  Grid,
-  Glyphicon
+  Grid
 } from "react-bootstrap";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require("styles/cart/CartList.css");
 
@@ -62,10 +63,10 @@ class CartListComponent extends React.Component {
             {this.state.orders.map(order => {
               return <ListGroupItem key={order.id}>
                   <Button bsStyle="info" href={"../cart-show/" + order.id}>
-                    <Glyphicon glyph="folder-open" />{" "}
+                    <FontAwesomeIcon icon="folder-open" />{" "}
                   </Button>
                   <Button onClick={() => this.removeOrder(order.id)} bsStyle="danger">
-                    <Glyphicon glyph="remove" />{" "}
+                    <FontAwesomeIcon icon="remove" />{" "}
                   </Button>
                   {order.description}, customer: {order.customer ? order.customer.name : ""}
                   <Badge>{order.createdDate}</Badge>

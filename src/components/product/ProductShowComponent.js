@@ -4,7 +4,8 @@ import React from 'react';
 
 require('styles/product/ProductShow.css');
 import { browserHistory } from 'react-router';
-import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar, Glyphicon, Modal, Row, FormControl, Col, lLabel, FormGroup, Image} from 'react-bootstrap';
+import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Row, FormControl, Col, lLabel, FormGroup, Image} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ProductShowComponent extends React.Component {
   constructor(props) {
@@ -100,10 +101,10 @@ class ProductShowComponent extends React.Component {
             </Media.Left>
             <Media.Body>
               <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="edit"/></Button>
-                <Button onClick = { this.handleRemove }><Glyphicon glyph="remove"/></Button>
-                <Button onClick = { this.handleAddStock }><Glyphicon glyph="add"/>Add Stock</Button>
-                <Button onClick = { this.handleAddToCart }><Glyphicon glyph="add"/>Add to Cart</Button>
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove"/></Button>
+                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="add"/>Add Stock</Button>
+                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="add"/>Add to Cart</Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.product.name}</Media.Heading>
               <ListGroup>
@@ -149,7 +150,7 @@ class ProductShowComponent extends React.Component {
             </Grid>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveStock}><Glyphicon glyph="ok"/></Button>
+            <Button onClick={saveStock}><FontAwesomeIcon icon="ok"/></Button>
           </Modal.Footer>
         </Modal>
 
@@ -176,7 +177,7 @@ class ProductShowComponent extends React.Component {
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveCartDialog}><Glyphicon glyph="ok"/></Button>
+            <Button onClick={saveCartDialog}><FontAwesomeIcon icon="ok"/></Button>
           </Modal.Footer>
         </Modal>
 

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { browserHistory } from 'react-router';
-import {FieldGroup, Label, FormControl, FormGroup, HelpBlock, Grid, Glyphicon, ButtonToolbar, Button} from 'react-bootstrap'
+import {FieldGroup, Label, FormControl, FormGroup, HelpBlock, Grid, ButtonToolbar, Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/vendor/VendorAdd.css');
 
@@ -69,8 +70,8 @@ class VendorAddComponent extends React.Component {
       <div className="vendoradd-component">
         <Grid>
           <ButtonToolbar>
-          <Button onClick = { this.handleClick }><Glyphicon glyph="ok"/></Button>
-          <Button onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> 
+          <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
+          <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
           </ButtonToolbar>
           <FormGroup controlId = "formName">
               <Label> Name </Label> <FormControl type = "text"
@@ -87,8 +88,8 @@ class VendorAddComponent extends React.Component {
               />
           </FormGroup>
           <ButtonToolbar>
-          <Button onClick = { this.handleOk }><Glyphicon glyph="ok"/> </Button> <Button
-          onClick = { this.handleGoList }><Glyphicon glyph="list"/></Button> </ButtonToolbar>
+          <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /> </Button> <Button
+          onClick = { this.handleGoList }><Gl<FontAwesomeIcon icon="list" />ton> </ButtonToolbar>
         </Grid>
       </div>
     );

@@ -10,13 +10,13 @@ import {
   Grid,
   Row,
   Col,
-  Glyphicon,
   Modal,
   FormGroup,
   Label,
   FormControl,
   Alert
 } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CartCurrentComponent extends React.Component {
   constructor() {
@@ -304,11 +304,12 @@ class CartCurrentComponent extends React.Component {
                     <td>
                       <Button onClick={() => this.removeItem(detail.id)}>
                         {" "}
-                        <Glyphicon glyph="remove" />{" "}
+                        <FontAwesomeIcon icon="remove" />
+                        {" "}
                       </Button>
                       <Button onClick={() => this.handleEditItem(detail)}>
                         {" "}
-                        <Glyphicon glyph="edit" />{" "}
+                        <FontAwesomeIcon icon="edit" />{" "}
                       </Button>
                     </td>
                   </tr>

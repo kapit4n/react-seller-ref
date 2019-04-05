@@ -1,8 +1,9 @@
 'use strict';
 
 import React from 'react';
-import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar, Glyphicon} from 'react-bootstrap';
+import { Media, Grid, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/customer/CustomerShow.css');
 
@@ -45,8 +46,10 @@ class CustomerShowComponent extends React.Component {
             </Media.Left>
             <Media.Body>
               <ButtonToolbar>
-                <Button onClick = { this.handleClick }><Glyphicon glyph="edit"/></Button>
-                <Button onClick = { this.handleRemove }><Glyphicon glyph="remove"/></Button>
+                <Button onClick = { this.handleClick }>
+                <FontAwesomeIcon icon="edit" />
+                <Glyphicon glyph="edit"/></Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /> </Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.customer.name}</Media.Heading>
               <ListGroup>

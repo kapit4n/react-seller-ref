@@ -3,7 +3,8 @@ require('styles/App.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Nav, NavItem, Navbar, MenuItem, NavDropdown, Table, Image, Button, Grid, Row, Col, Glyphicon, FormGroup, FormControl} from 'react-bootstrap';
+import { Nav, NavItem, Navbar, MenuItem, NavDropdown, Table, Image, Button, Grid, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 let yeomanImage = require('../images/yeoman.png');
 
@@ -76,7 +77,7 @@ class AppComponent extends React.Component {
           <Button type="submit" onClick={()=>this.search()} >Search</Button>
           </Navbar.Form>
           <Nav pullRight>
-            <MenuItem eventKey={1} href="/cart-current"><Glyphicon glyph="shopping-cart"/>Cart(${this.state.currentTotal})</MenuItem>
+            <MenuItem eventKey={1} href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</MenuItem>
             <MenuItem eventKey={2} href="/login">Login</MenuItem>
           </Nav>
         </Navbar.Collapse>

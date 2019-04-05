@@ -11,6 +11,9 @@ import {
 } from "react-bootstrap";
 require('styles/customer/CustomerLineItem.css');
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 class CustomerLineItemComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +34,8 @@ class CustomerLineItemComponent extends React.Component {
         <td>
           {" "}
         <Button onClick={() => props.handleClick(order.id)} bsStyle="danger">
-            <Glyphicon glyph="remove" />{" "}
+            <FontAwesomeIcon icon="remove" />
+            {" "}
           </Button>
         </td>
       </tr>;

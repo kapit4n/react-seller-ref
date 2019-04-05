@@ -3,10 +3,11 @@
 import React from 'react';
 import $ from 'jquery'
 require('styles/product/ProductList.css');
-import { Table, Image, Button, Grid, Row, Col, Glyphicon} from 'react-bootstrap';
+import { Table, Image, Button, Grid, Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import ProductLineItemComponent from './ProductLineItemComponent';
 import { product } from '../../api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ProductListComponent extends React.Component {
   constructor() {
@@ -46,7 +47,7 @@ class ProductListComponent extends React.Component {
     return (
       <div>
         <Grid>
-          <Button onClick = { this.handleAdd }><Glyphicon glyph="plus"/></Button>
+          <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
           <Table striped bordered condensed hover>
             <thead>

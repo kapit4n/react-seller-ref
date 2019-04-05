@@ -1,10 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { Table, Image, Button, Grid, Row, Col, Glyphicon} from 'react-bootstrap';
+import { Table, Image, Button, Grid, Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 require('styles/vendor/VendorList.css');
 import VendorLineItemComponent from './VendorLineItemComponent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/vendor/VendorList.css');
 
@@ -30,7 +31,7 @@ class VendorListComponent extends React.Component {
     return (
       <div>
         <Grid>
-          <Button onClick = { this.handleAdd }><Glyphicon glyph="plus"/></Button>
+          <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
           <Table striped bordered condensed hover>
             <thead>

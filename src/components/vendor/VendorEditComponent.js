@@ -1,8 +1,9 @@
 'use strict';
 
 import React from 'react';
-import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Media, Glyphicon } from 'react-bootstrap';
+import { Button, ButtonToolbar, FormGroup, Label, FormControl, Grid, Media } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('styles/vendor/VendorEdit.css');
 
@@ -73,7 +74,7 @@ class VendorEditComponent extends React.Component {
             <Media.Body>
              <Grid>
               <ButtonToolbar>
-                <Button onClick = { this.handleOk }><Glyphicon glyph="ok"/></Button>
+                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
               </ButtonToolbar>
               <Media.Heading>Name: {this.state.name}</Media.Heading>
                 <FormGroup controlId = "formName">
@@ -91,7 +92,7 @@ class VendorEditComponent extends React.Component {
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                  <Button onClick = { this.handleOk }><Glyphicon glyph="ok"/></Button>
+                  <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
                 </ButtonToolbar>
             </Grid>
             </Media.Body>

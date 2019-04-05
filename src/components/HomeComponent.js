@@ -2,7 +2,8 @@
 
 require('styles//Home.css');
 import React from 'react';
-import {Grid, Row, Col, Image, Button, ButtonToolbar, Glyphicon, Modal, FormGroup, Label, FormControl} from 'react-bootstrap';
+import {Grid, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup, Label, FormControl} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 /**
  * Component that displays the shopping products
@@ -108,7 +109,7 @@ class HomeComponent extends React.Component {
                 <Button bsStyle="link" href={'product-show/' + product.id}>{product.name}</Button><br/>
                 <Label style={priceStyle}>${product.price}</Label>
                 <ButtonToolbar>
-                  <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><Glyphicon glyph="shopping-cart"/> Add to Cart </Button>
+                  <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><FontAwesomeIcon icon={"shopping-cart"}/> Add to Cart </Button>
                 </ButtonToolbar>
               </Col>;
             }, this)}
