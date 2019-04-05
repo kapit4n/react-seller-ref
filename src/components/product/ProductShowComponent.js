@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { withRouter } from 'react-router-dom';
-import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Row, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
+import { Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Media, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/product/ProductShow.css');
@@ -13,7 +13,6 @@ class ProductShowComponent extends React.Component {
     this.productURL = 'http://localhost:3000/api/products/';
     this.vendorUrl = "http://localhost:3000/api/vendors";
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
-    this.props = props;
     this.state = { product : {}, show: false, quantity: 0, quantityToCart: 0, showCartDialog: false, vendors: [], customerId: 0 };
   }
 
@@ -51,7 +50,11 @@ class ProductShowComponent extends React.Component {
   };
 
   componentDidMount() {
-    fetch(this.productURL + this.props.params.id + '?access_token=' + this.access_token)
+    console.log(this.props.match.params);
+    if (!this.props.match.params) {
+      return;
+    }
+    fetch(this.productURL + this.props.match.params.id + '?access_token=' + this.access_token)
       .then((response) => response.json())
       .then((responseJson) => { this.setState({product: responseJson});})
       .catch((error) => { console.error(error); });
@@ -96,9 +99,9 @@ class ProductShowComponent extends React.Component {
       <div className="productshow-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.product.img} alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
@@ -106,7 +109,7 @@ class ProductShowComponent extends React.Component {
                 <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="add"/>Add Stock</Button>
                 <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="add"/>Add to Cart</Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.product.name}</Media.Heading>
+              <span>Name: {this.state.product.name}</span>
               <ListGroup>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Code: </h4>{this.state.product.code}</ListGroupItem>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Stock: </h4>{this.state.product.stock}</ListGroupItem>
@@ -123,7 +126,7 @@ class ProductShowComponent extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <Row className="show-Container">
+              <Media className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
@@ -146,7 +149,7 @@ class ProductShowComponent extends React.Component {
                     value = { this.state.quantity } onChange = { this.handleChangeQuantity } />
                 </FormGroup>
                 </Col>
-              </Row>
+              </Media>
             </Container>
           </Modal.Body>
           <Modal.Footer>
@@ -160,7 +163,7 @@ class ProductShowComponent extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <Row className="show-Container">
+              <Media className="show-Container">
                 <Col xs={9} sm={9} md={6} height={60}>
                   <h2>{this.state.product.name}</h2><br />
                   <Image width={300} src={this.state.product.img} thumbnail /><br />
@@ -168,7 +171,7 @@ class ProductShowComponent extends React.Component {
                   <lspan> Stock: </lspan>{this.state.product.stock} <br />
                   ${this.state.product.description}
                 </Col>
-              </Row>
+              </Media>
             </Container>
             <FormGroup controlId = "formCode">
                 <lspan>Quantity</lspan>
@@ -192,4 +195,4 @@ ProductShowComponent.displayName = 'ProductProductShowComponent';
 // ProductShowComponent.propTypes = {};
 // ProductShowComponent.defaultProps = {};
 
-export default withRouter(ProductShowComponent);
+export default ProductShowComponent;

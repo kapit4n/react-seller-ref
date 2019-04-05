@@ -9,8 +9,8 @@ require('../../styles/cart/CartShow.css');
 class CartShowComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.orderURL = "http://localhost:3000/api/orders?filter[include]=customer&filter[where][id]=" + this.props.params.id;
-    this.orderDetails = "http://localhost:3000/api/orderDetails?filter[where][orderId]=" + this.props.params.id + "&filter[include]=product";
+    this.orderURL = "http://localhost:3000/api/orders?filter[include]=customer&filter[where][id]=" + this.props.match.params.id;
+    this.orderDetails = "http://localhost:3000/api/orderDetails?filter[where][orderId]=" + this.props.match.params.id + "&filter[include]=product";
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
     this.state = { orderDetails: [], order:{} };
     this.loadItems();
@@ -30,15 +30,15 @@ class CartShowComponent extends React.Component {
 
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
 
-            </Media.Left>
+            </Media>
             <Media.Body>
               <ButtonToolbar>
-                 <Button onClick = {()=>this.deliverOrder(this.state.order.id)}> <FontAwesomeIcon icon="send"/> Deliver</Button>
-                  <Button onClick = {()=>this.cancelOrder(this.state.order.id)}> <FontAwesomeIcon icon="remove-sign"/> Remove</Button>
+                 <Button onClick = {()=>this.deliverOrder(this.state.order.id)}> <FontAwesomeIcon icon="paper-plane"/> Deliver</Button>
+                  <Button onClick = {()=>this.cancelOrder(this.state.order.id)}> <FontAwesomeIcon icon="times"/> Remove</Button>
               </ButtonToolbar>
-              <Media.Heading>Order Details</Media.Heading>
+              <span>Order Details</span>
               <ListGroup>
                 <ListGroupItem><h4 style={{ display: 'inline' }}>Customer: </h4>{this.state.order.customer ? this.state.order.customer.name: ""}</ListGroupItem>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Date: </h4>{this.state.order.createdDate}</ListGroupItem>

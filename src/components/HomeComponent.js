@@ -3,6 +3,7 @@
 import React from 'react';
 import {Container, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom';
 
 require('../styles/Home.css');
 /**
@@ -106,7 +107,7 @@ class HomeComponent extends React.Component {
                 <div style={cartImageContainer}>
                   <Image src={product.img} thumbnail />
                 </div>
-                <Button bsStyle="link" href={'product-show/' + product.id}>{product.name}</Button><br/>
+                <Link to={'product-show/' + product.id}>{product.name}</Link><br/>
                 <span style={priceStyle}>${product.price}</span>
                 <ButtonToolbar>
                   <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><FontAwesomeIcon icon={"shopping-cart"}/> Add to Cart </Button>

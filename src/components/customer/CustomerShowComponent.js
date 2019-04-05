@@ -3,7 +3,6 @@
 import React from 'react';
 import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { withRouter } from 'react-router-dom'
 
 require('../../styles/customer/CustomerShow.css');
 
@@ -30,7 +29,7 @@ class CustomerShowComponent extends React.Component {
   };
 
   componentDidMount() {
-    fetch(this.customerURL + this.props.params.id + '?access_token=' + this.access_token) 
+    fetch(this.customerURL + this.props.match.params.id + '?access_token=' + this.access_token) 
       .then((response) => response.json())
       .then((responseJson) => { this.setState({customer: responseJson});})
       .catch((error) => { console.error(error); });
@@ -41,17 +40,16 @@ class CustomerShowComponent extends React.Component {
       <div className="customershow-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://mindtouch.com/resources/wp-content/uploads/sites/2/2014/08/happy-customers.png" alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }>
-                <FontAwesomeIcon icon="edit" />
                 <FontAwesomeIcon icon="edit"/></Button>
-                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /> </Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="times" /> </Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.customer.name}</Media.Heading>
+              <span>Name: {this.state.customer.name}</span>
               <ListGroup>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Budget: </h4>{this.state.customer.budget}</ListGroupItem>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Address: </h4>{this.state.customer.address}</ListGroupItem>
@@ -71,4 +69,4 @@ CustomerShowComponent.displayName = 'CustomerCustomerShowComponent';
 // CustomerShowComponent.propTypes = {};
 // CustomerShowComponent.defaultProps = {};
 
-export default withRouter(CustomerShowComponent);
+export default CustomerShowComponent;

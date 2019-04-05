@@ -66,7 +66,7 @@ class CartListComponent extends React.Component {
                     <FontAwesomeIcon icon="folder-open" />{" "}
                   </Button>
                   <Button onClick={() => this.removeOrder(order.id)} bsStyle="danger">
-                    <FontAwesomeIcon icon="remove" />{" "}
+                    <FontAwesomeIcon icon="times" />{" "}
                   </Button>
                   {order.description}, customer: {order.customer ? order.customer.name : ""}
                   <Badge>{order.createdDate}</Badge>

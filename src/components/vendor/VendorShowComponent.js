@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/vendor/VendorShow.css');
 
@@ -29,7 +30,7 @@ class VendorShowComponent extends React.Component {
   };
 
   componentDidMount() {
-    fetch(this.vendorURL + this.props.params.id + '?access_token=' + this.access_token) 
+    fetch(this.vendorURL + this.props.match.params.id + '?access_token=' + this.access_token) 
       .then((response) => response.json())
       .then((responseJson) => { this.setState({vendor: responseJson});})
       .catch((error) => { console.error(error); });
@@ -40,15 +41,15 @@ class VendorShowComponent extends React.Component {
       <div className="vendorshow-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit" /></Button>
                 <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /></Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.vendor.name}</Media.Heading>
+              <span>Name: {this.state.vendor.name}</span>
               <ListGroup>
                 <ListGroupItem><h4 style={{display: 'inline'}}>Address: </h4>{this.state.vendor.address}</ListGroupItem>
               </ListGroup>
