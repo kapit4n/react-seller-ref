@@ -1,26 +1,11 @@
 'use strict';
 
 import React from 'react';
-import {Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
+import { Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup, FormControl, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
 require('../styles/Home.css');
-
-const renderTooltip = props => (
-  <div
-    {...props}
-    style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.85)',
-      padding: '2px 10px',
-      color: 'white',
-      borderRadius: 3,
-      ...props.style,
-    }}
-  >
-  </div>
-);
-
 
 /**
  * Component that displays the shopping products
@@ -28,29 +13,31 @@ const renderTooltip = props => (
 class HomeComponent extends React.Component {
   sendProductToCart = () => {
     let item = {
-                  quantity: this.state.quantity,
-                  price: this.state.product.price,
-                  totalPrice: this.state.product.price * this.state.quantity,
-                  discount: 0,
-                  product: {id: this.state.product.id}
-                };
+      quantity: this.state.quantity,
+      price: this.state.product.price,
+      totalPrice: this.state.product.price * this.state.quantity,
+      discount: 0,
+      product: { id: this.state.product.id }
+    };
 
     fetch(this.orderURL + '?access_token=' + this.access_token, {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
       body: JSON.stringify(item)
-    }).then((response) => response.json())
-    .then((responseJson) => { this.eventSubscriptors(); })
-    .catch((error) => { console.error(error); });
+    }).then((response) => {
+      this.loadCurrentCartTotal();
+      return response.json()
+    })
+      .then((responseJson) => { this.eventSubscriptors(); })
+      .catch((error) => { console.error(error); });
   };
 
   /**
    * Shows modal to add/send product to shopping cart
    */
   setProductForModal = (product: any) => {
-    console.log(product);
-    this.setState({ show: true});
-    this.setState({ product: product});
+    this.setState({ show: true });
+    this.setState({ product: product });
   };
 
   eventSubscriptors = () => {
@@ -64,8 +51,9 @@ class HomeComponent extends React.Component {
     super();
     this.productURL = 'http://localhost:3000/api/products';
     this.orderURL = 'http://localhost:3000/api/orderDetails';
+
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
-    this.state = {products: [], quantity: 0, show: false, product: {}};
+    this.state = { products: [], quantity: 0, show: false, product: {} };
   }
 
   /**
@@ -78,7 +66,17 @@ class HomeComponent extends React.Component {
     }
     fetch(this.productURL + '?' + filter + 'access_token=' + this.access_token)
       .then((response) => response.json())
-      .then((responseJson) => { this.setState({products:responseJson});})
+      .then((responseJson) => { this.setState({ products: responseJson }); })
+      .catch((error) => { console.error(error); });
+    this.loadCurrentCartTotal();
+  }
+
+  loadCurrentCartTotal() {
+    fetch(this.orderURL + '/currentTotal?' + 'access_token=' + this.access_token)
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJson) => { this.setState({ currentTotal: responseJson.total }); })
       .catch((error) => { console.error(error); });
   }
 
@@ -91,12 +89,12 @@ class HomeComponent extends React.Component {
 
     // close item on cart
     let closeItemOnCart = () => {
-        this.setState({ show: false});
+      this.setState({ show: false });
     };
 
     // Save item on cart
     let saveItemOnCart = () => {
-      this.setState({ show: false});
+      this.setState({ show: false });
       this.sendProductToCart();
     }
     // Image properties
@@ -117,26 +115,29 @@ class HomeComponent extends React.Component {
     return (
       <div className="home-component">
         <Container>
+          <Nav>
+            <Nav.Item> <Nav.Link href="/cart-current"><FontAwesomeIcon icon="shopping-cart" />Cart(${this.state.currentTotal})</Nav.Link></Nav.Item>
+          </Nav>
           <Row className="show-Container">
             {this.state.products.map(function (product) {
               return <Col key={product.id} xs={6} md={4} height={350} style={cartContainerPadding}>
                 <div style={cartImageContainer}>
-                <OverlayTrigger
-                  placement="right-start"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={
-                    <Tooltip id={`tooltip-top`}>
-                      On stock <strong>{product.stock}</strong>.
+                  <OverlayTrigger
+                    placement="right-start"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={
+                      <Tooltip id={`tooltip-top`}>
+                        On stock <strong>{product.stock}</strong>.
                     </Tooltip>
-                  }
-                >
-                  <Image src={product.img} thumbnail style={{ height: '180px', width: '276px'}} />
-                </OverlayTrigger>
+                    }
+                  >
+                    <Image src={product.img} thumbnail style={{ height: '180px', width: '276px' }} />
+                  </OverlayTrigger>
                 </div>
-                <Link to={'product-show/' + product.id}>{product.name}</Link><br/>
+                <Link to={'product-show/' + product.id}>{product.name}</Link><br />
                 <span style={priceStyle}>${product.price}</span>
                 <ButtonToolbar>
-                  <Button onClick={()=>this.setProductForModal(product)} style={{width: 250, marginLeft: 25}}><FontAwesomeIcon icon={"shopping-cart"}/> Add to Cart </Button>
+                  <Button onClick={() => this.setProductForModal(product)} style={{ width: 250, marginLeft: 25 }}><FontAwesomeIcon icon={"shopping-cart"} /> Add to Cart </Button>
                 </ButtonToolbar>
               </Col>;
             }, this)}
@@ -159,14 +160,14 @@ class HomeComponent extends React.Component {
                 </Col>
               </Row>
             </Container>
-            <FormGroup controlId = "formCode">
-                <span>Quantity</span>
-                <FormControl type = "text" placeholder = "Enter quantity"
-                value = { this.state.quantity } onChange = { this.handleChangeQuantity } />
+            <FormGroup controlId="formCode">
+              <span>Quantity</span>
+              <FormControl type="text" placeholder="Enter quantity"
+                value={this.state.quantity} onChange={this.handleChangeQuantity} />
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="check"/></Button>
+            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="check" /></Button>
           </Modal.Footer>
         </Modal>
 

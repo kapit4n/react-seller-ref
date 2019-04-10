@@ -1,11 +1,8 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Nav, Navbar, NavDropdown, Form, Image, Button, Container, Row, Col, FormGroup, FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../styles/App.css';
-//import { withRouter } from 'react-router-dom'
-//import { Router, Route, Link } from 'react-router'
 import { Route, Link } from 'react-router-dom';
 
 import About from './AboutComponent';
@@ -54,19 +51,11 @@ class App extends React.Component {
     if (this.props.location.query && this.props.location.query.search) {
       this.setState({products: [], searchText: this.props.location.query.search});
     }
-    this.loadCurrentCartTotal();
-  }
-
-  loadCurrentCartTotal() {
-    fetch(this.orderDetailURL + '/currentTotal?' + 'access_token=' + this.access_token)
-      .then((response) => response.json())
-      .then((responseJson) => { this.setState({currentTotal:responseJson.total});})
-      .catch((error) => { console.error(error); });
   }
 
   render() {
     return (
-      <div>
+      <div className="container">
       <Navbar>
           <Navbar.Brand>
             <a href="/home">React-Seller</a>
@@ -89,7 +78,6 @@ class App extends React.Component {
             <NavDropdown  title="Vendor"  id="basic-nav-dropdown">
               <Nav.Item> <Nav.Link href="/vendor-list">List</Nav.Link></Nav.Item>
             </NavDropdown>
-
           </Nav>
           <Form>
             <FormGroup>
@@ -99,7 +87,6 @@ class App extends React.Component {
           <Button type="submit" onClick={()=>this.search()} >Search</Button>
           </Form>
           <Nav>
-            <Nav.Item> <Nav.Link href="/cart-current"><FontAwesomeIcon icon="shopping-cart"/>Cart(${this.state.currentTotal})</Nav.Link></Nav.Item>
             <Nav.Item> <Nav.Link href="/login">Login</Nav.Link></Nav.Item>
           </Nav>
         </Navbar.Collapse>
