@@ -140,7 +140,7 @@ class HomeComponent extends React.Component {
             </FormGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="ok"/></Button>
+            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="check"/></Button>
           </Modal.Footer>
         </Modal>
 
