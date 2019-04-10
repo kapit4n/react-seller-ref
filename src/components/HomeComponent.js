@@ -130,7 +130,7 @@ class HomeComponent extends React.Component {
                     </Tooltip>
                   }
                 >
-                  <Image src={product.img} thumbnail />
+                  <Image src={product.img} thumbnail style={{ height: '180px', width: '276px'}} />
                 </OverlayTrigger>
                 </div>
                 <Link to={'product-show/' + product.id}>{product.name}</Link><br/>
