@@ -69,7 +69,7 @@ class VendorAddComponent extends React.Component {
       <div className="vendoradd-component">
         <Container>
           <ButtonToolbar>
-          <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok" /></Button>
+          <Button onClick = { this.handleClick }><FontAwesomeIcon icon="check" /></Button>
           <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
           </ButtonToolbar>
           <FormGroup controlId = "formName">
@@ -87,7 +87,7 @@ class VendorAddComponent extends React.Component {
               />
           </FormGroup>
           <ButtonToolbar>
-            <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /> </Button> 
+            <Button onClick = { this.handleOk }><FontAwesomeIcon icon="check" /> </Button> 
             <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /> </Button>
           </ButtonToolbar>
         </Container>

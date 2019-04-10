@@ -62,10 +62,10 @@ class CartListComponent extends React.Component {
           <ListGroup>
             {this.state.orders.map(order => {
               return <ListGroupItem key={order.id}>
-                  <Button bsStyle="info" href={"../cart-show/" + order.id}>
+                  <Button variant="info" href={"../cart-show/" + order.id}>
                     <FontAwesomeIcon icon="folder-open" />{" "}
                   </Button>
-                  <Button onClick={() => this.removeOrder(order.id)} bsStyle="danger">
+                  <Button onClick={() => this.removeOrder(order.id)} variant="danger">
                     <FontAwesomeIcon icon="times" />{" "}
                   </Button>
                   {order.description}, customer: {order.customer ? order.customer.name : ""}

@@ -13,10 +13,6 @@ class ProductListComponent extends React.Component {
     this.productURL = 'http://localhost:3000/api/products';
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
     this.state = { products: []};
-    //console.log('product');
-    //product.actions().find({});
-    //console.log(product);
-    //product.map(product => console.log(product));
   }
 
   componentDidMount() {
@@ -47,7 +43,7 @@ class ProductListComponent extends React.Component {
         <Container>
           <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
-          <Table striped bordered condensed hover>
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Name</th>

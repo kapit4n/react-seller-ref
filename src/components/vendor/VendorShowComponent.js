@@ -47,7 +47,7 @@ class VendorShowComponent extends React.Component {
             <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit" /></Button>
-                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove" /></Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="window-close" /></Button>
               </ButtonToolbar>
               <span>Name: {this.state.vendor.name}</span>
               <ListGroup>

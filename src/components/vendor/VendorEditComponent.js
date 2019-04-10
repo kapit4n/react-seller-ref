@@ -47,7 +47,7 @@ class VendorEditComponent extends React.Component {
      * Loads vendor information and set to state
      */
     componentDidMount() {
-        fetch(this.vendorURL + this.props.params.id + '?access_token=' + this.access_token)
+        fetch(this.vendorURL + this.props.match.params.id + '?access_token=' + this.access_token)
             .then((response) => response.json())
             .then((responseJson) => { this.setState(responseJson);
                 console.log(responseJson); })
@@ -70,15 +70,15 @@ class VendorEditComponent extends React.Component {
       <div className="vendoredit-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
              <Container>
               <ButtonToolbar>
-                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
+                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="save" /></Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.name}</Media.Heading>
+              <h2>Name: {this.state.name}</h2>
                 <FormGroup controlId = "formName">
                     <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
@@ -94,7 +94,7 @@ class VendorEditComponent extends React.Component {
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                  <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok" /></Button>
+                  <Button onClick = { this.handleOk }><FontAwesomeIcon icon="save" /></Button>
                 </ButtonToolbar>
             </Container>
             </Media.Body>

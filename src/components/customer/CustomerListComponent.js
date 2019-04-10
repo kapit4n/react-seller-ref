@@ -63,7 +63,7 @@ class CustomerListComponent extends React.Component {
               top: "15%"
             }}
           />
-          <Table striped bordered condensed hover>
+          <Table striped bordered condensed="true" hover>
             <thead>
               <tr>
                 <th>Name</th>
@@ -74,7 +74,7 @@ class CustomerListComponent extends React.Component {
             </thead>
             <tbody>
               {this.state.customers.map( customer => {
-                return <tr key={customer.Id} className={"customerlineitem-component"}>
+                return <tr key={customer.id} className={"customerlineitem-component"}>
                     <td>
                       <a href={"customer-show/" + customer.id}>
                         {customer.name}
@@ -83,7 +83,7 @@ class CustomerListComponent extends React.Component {
                     <td>{customer.budget}</td>
                     <td>{customer.address}</td>
                     <td>
-                      <Button onClick={()=>this.removeCustomer(customer.id)} bsStyle="danger">
+                      <Button onClick={()=>this.removeCustomer(customer.id)} variant="danger">
                         <FontAwesomeIcon icon="times" />
                       </Button>
                     </td>

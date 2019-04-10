@@ -32,7 +32,7 @@ class CustomerEditComponent extends React.Component {
     };
 
     componentDidMount() {
-        fetch(this.customerURL + this.props.params.id + '?access_token=' + this.access_token)
+        fetch(this.customerURL + this.props.match.params.id + '?access_token=' + this.access_token)
             .then((response) => response.json())
             .then((responseJson) => { this.setState(responseJson);
                 console.log(responseJson); })
@@ -56,15 +56,15 @@ class CustomerEditComponent extends React.Component {
       <div className="customeredit-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.img} alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
              <Container>
               <ButtonToolbar>
-                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok"/></Button>
+                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="save"/></Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.name}</Media.Heading>
+              <h2>Name: {this.state.name}</h2>
                 <FormGroup controlId = "formName">
                     <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
@@ -87,7 +87,7 @@ class CustomerEditComponent extends React.Component {
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                  <Button onClick = { this.handleOk }><FontAwesomeIcon icon="ok"/></Button>
+                  <Button onClick = { this.handleOk }><FontAwesomeIcon icon="save"/></Button>
                 </ButtonToolbar>
             </Container>
             </Media.Body>

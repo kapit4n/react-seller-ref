@@ -105,9 +105,9 @@ class ProductShowComponent extends React.Component {
             <Media.Body>
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
-                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="remove"/></Button>
-                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="add"/>Add Stock</Button>
-                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="add"/>Add to Cart</Button>
+                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="window-close"/></Button>
+                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="plus"/>Add Stock</Button>
+                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="plus"/>Add to Cart</Button>
               </ButtonToolbar>
               <span>Name: {this.state.product.name}</span>
               <ListGroup>
@@ -137,7 +137,7 @@ class ProductShowComponent extends React.Component {
                             onChange = { this.handleChangeVendorId }>
                   {this.state.vendors.map(function(vendor) {
                     return (
-                        <option value={vendor.id}>{vendor.name}</option>
+                        <option value={vendor.id} key={vendor.id}>{vendor.name}</option>
                         );
                   }, this)}
                   </FormControl>

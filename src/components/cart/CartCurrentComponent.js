@@ -249,26 +249,26 @@ class CartCurrentComponent extends React.Component {
 
     return (
       <div className="cartcurrent-component container">
-        <Alert bsStyle="warning">
+        <Alert variant="warning">
           <strong>{this.state.successMessage}</strong>
         </Alert>
         <div className="container">
           {" "}
           <a href={"cart-list/"}>list</a>{" "}
         </div>
-        <Container>
-        <FormGroup controlId="formControlsSelect">
+        <Form>
+        <Form.Group controlId="formControlsSelect">
           <span>Select Customer</span>
-          <FormControl componentClass="select" placeholder="select" value = { this.state.customerId }
+          <Form.Control as="select" placeholder="select" value = { this.state.customerId }
                     onChange = { this.handleChangeCustomerId }>
           {this.state.customers.map(function(customer) {
             return (
                 <option value={customer.id} key={customer.id}>{customer.name}</option>
                 );
           }, this)}
-          </FormControl>
-        </FormGroup>
-          <Table striped bordered condensed hover>
+          </Form.Control>
+        </Form.Group>
+          <Table striped bordered condensed="true" hover>
             <thead>
               <tr>
                 <th>Code</th>
@@ -323,7 +323,7 @@ class CartCurrentComponent extends React.Component {
           <Button onClick={() => this.submitCart()}>
             <FontAwesomeIcon icon="send" /> Submit Cart{" "}
           </Button>
-        </Container>
+        </Form>
         <Modal
           show={this.state.show}
           onHide={close}

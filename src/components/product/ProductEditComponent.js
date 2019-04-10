@@ -42,7 +42,7 @@ class ProductEditComponent extends React.Component {
     };
 
     componentDidMount() {
-        fetch(this.productURL + this.props.params.id + '?access_token=' + this.access_token)
+        fetch(this.productURL + this.props.match.params.id + '?access_token=' + this.access_token)
             .then((response) => response.json())
             .then((responseJson) => { this.setState(responseJson);
                 console.log(responseJson); })
@@ -78,15 +78,15 @@ class ProductEditComponent extends React.Component {
       <div className="productedit-component">
         <Container>
           <Media>
-            <Media.Left>
+            <Media>
               <img  style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src={this.state.img} alt="Image"/>
-            </Media.Left>
+            </Media>
             <Media.Body>
              <Container>
               <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/></Button>
+                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="save"/></Button>
               </ButtonToolbar>
-              <Media.Heading>Name: {this.state.name}</Media.Heading>
+              <h2>Name: {this.state.name}</h2>
                 <FormGroup controlId = "formName">
                     <span> Name </span> <FormControl type = "text"
                     placeholder = "Enter text"
@@ -123,14 +123,15 @@ class ProductEditComponent extends React.Component {
                     />
                 </FormGroup>
                 <FormGroup controlId = "formDescription">
-                    <span> Description </span> <FormControl type = "text"
-                    placeholder = "Description" componentClass="textarea"
+                    <span> Description </span> 
+                    <FormControl type = "text"
+                    placeholder = "Description" className="textarea"
                     value = { this.state.description }
                     onChange = { this.handleChangeDescription }
                     />
                 </FormGroup>
                 <ButtonToolbar>
-                  <Button onClick = { this.handleClick }><FontAwesomeIcon icon="ok"/></Button>
+                  <Button onClick = { this.handleClick }><FontAwesomeIcon icon="save"/></Button>
                 </ButtonToolbar>
             </Container>
             </Media.Body>
