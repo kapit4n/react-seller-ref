@@ -1,11 +1,27 @@
 'use strict';
 
 import React from 'react';
-import {Container, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
+import {Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup,  FormControl} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
 require('../styles/Home.css');
+
+const renderTooltip = props => (
+  <div
+    {...props}
+    style={{
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      padding: '2px 10px',
+      color: 'white',
+      borderRadius: 3,
+      ...props.style,
+    }}
+  >
+  </div>
+);
+
+
 /**
  * Component that displays the shopping products
  */
@@ -105,7 +121,17 @@ class HomeComponent extends React.Component {
             {this.state.products.map(function (product) {
               return <Col key={product.id} xs={6} md={4} height={350} style={cartContainerPadding}>
                 <div style={cartImageContainer}>
+                <OverlayTrigger
+                  placement="right-start"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      On stock <strong>{product.stock}</strong>.
+                    </Tooltip>
+                  }
+                >
                   <Image src={product.img} thumbnail />
+                </OverlayTrigger>
                 </div>
                 <Link to={'product-show/' + product.id}>{product.name}</Link><br/>
                 <span style={priceStyle}>${product.price}</span>

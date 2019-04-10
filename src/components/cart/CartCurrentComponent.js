@@ -302,7 +302,7 @@ class CartCurrentComponent extends React.Component {
                       <Image src={detail.product.img} thumbnail width={100} />
                     </td>
                     <td>
-                      <Button onClick={() => this.removeItem(detail.id)}>
+                      <Button variant="danger" onClick={() => this.removeItem(detail.id)} >
                         {" "}
                         <FontAwesomeIcon icon="times" />
                         {" "}
@@ -368,7 +368,7 @@ class CartCurrentComponent extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={close}>
-              <FontAwesomeIcon icon="ok" />
+              <FontAwesomeIcon icon="check" />
             </Button>
           </Modal.Footer>
         </Modal>
