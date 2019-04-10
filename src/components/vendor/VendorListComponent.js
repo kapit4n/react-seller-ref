@@ -33,7 +33,7 @@ class VendorListComponent extends React.Component {
         <Container>
           <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
           <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
-          <Table striped bordered condensed hover>
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Name</th>
