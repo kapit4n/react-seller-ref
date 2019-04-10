@@ -10,6 +10,7 @@ import {
   Row,
   Col,
   Modal,
+  Form,
   FormGroup,
   FormControl,
   Alert
@@ -303,7 +304,7 @@ class CartCurrentComponent extends React.Component {
                     <td>
                       <Button onClick={() => this.removeItem(detail.id)}>
                         {" "}
-                        <FontAwesomeIcon icon="remove" />
+                        <FontAwesomeIcon icon="times" />
                         {" "}
                       </Button>
                       <Button onClick={() => this.handleEditItem(detail)}>
@@ -318,10 +319,10 @@ class CartCurrentComponent extends React.Component {
           </Table>
           <Button onClick={() => this.clearCart()}>
             {" "}
-            <FontAwesomeIcon icon="cleaning" /> Clear
+            <FontAwesomeIcon icon="eraser" /> Clear
           </Button>
           <Button onClick={() => this.submitCart()}>
-            <FontAwesomeIcon icon="send" /> Submit Cart{" "}
+            <FontAwesomeIcon icon="paper-plane" /> Submit Cart{" "}
           </Button>
         </Form>
         <Modal
