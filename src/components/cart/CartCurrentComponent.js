@@ -3,18 +3,11 @@
 import React from "react";
 
 import {
-  Table,
-  Image,
-  Button,
-  Container,
-  Row,
-  Col,
-  Modal,
-  Form,
-  FormGroup,
-  FormControl,
-  Alert
+  Table, Image, Button,
+  Container, Row, Col, Modal,
+  Form, FormGroup, FormControl, Alert
 } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 require("../../styles/cart/CartCurrent.css");
 
@@ -255,7 +248,7 @@ class CartCurrentComponent extends React.Component {
         </Alert>
         <div className="container">
           {" "}
-          <a href={"cart-list/"}>list</a>{" "}
+          <Link to={"/cart-list/"}>list</Link>{" "}
         </div>
         <Form>
         <Form.Group controlId="formControlsSelect">
@@ -291,9 +284,9 @@ class CartCurrentComponent extends React.Component {
                 return (
                   <tr className={"detailRow"} key={detail.id}>
                     <td>
-                      <a href={"product-show/" + detail.product.id}>
+                      <Link to={"/product-show/" + detail.product.id}>
                         {detail.product.id}
-                      </a>
+                      </Link>
                     </td>
                     <td>{detail.quantity}</td>
                     <td>${detail.price}</td>

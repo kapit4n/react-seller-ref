@@ -116,7 +116,7 @@ class HomeComponent extends React.Component {
       <div className="home-component">
         <Container>
           <Nav>
-            <Nav.Item> <Nav.Link href="/cart-current"><FontAwesomeIcon icon="shopping-cart" />Cart(${this.state.currentTotal})</Nav.Link></Nav.Item>
+            <Nav.Item> <Link to="/cart-current"><FontAwesomeIcon icon="shopping-cart" />Cart(${this.state.currentTotal})</Link></Nav.Item>
           </Nav>
           <Row className="show-Container">
             {this.state.products.map(function (product) {

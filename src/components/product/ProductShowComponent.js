@@ -2,7 +2,6 @@
 
 import React from 'react';
 
-import { withRouter } from 'react-router-dom';
 import { Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Media, FormControl, Col, FormGroup, Image} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

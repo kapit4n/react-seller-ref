@@ -1,10 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
+import { Table,  Button, Container } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
-import CustomerLineItemComponent from './CustomerLineItemComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom';
 require('../../styles/customer/CustomerList.css');
 
 
@@ -76,9 +76,9 @@ class CustomerListComponent extends React.Component {
               {this.state.customers.map( customer => {
                 return <tr key={customer.id} className={"customerlineitem-component"}>
                     <td>
-                      <a href={"customer-show/" + customer.id}>
+                      <Link to={"customer-show/" + customer.id}>
                         {customer.name}
-                      </a>
+                      </Link>
                     </td>
                     <td>{customer.budget}</td>
                     <td>{customer.address}</td>
