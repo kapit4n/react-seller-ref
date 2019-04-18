@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 require('../../styles/product/ProductLineItem.css');
 
@@ -16,7 +17,7 @@ class ProductLineItemComponent extends React.Component {
   render() {
     return (
       <tr className={'productlineitem-component'}>
-        <td><a href={'product-show/' + this.state.product.id}>{this.state.product.name}</a></td>
+        <td><Link to={'product-show/' + this.state.product.id}>{this.state.product.name}</Link></td>
         <td>{this.state.product.code}</td>
         <td><Image src={this.state.product.img} thumbnail width={60} height={60} /></td>
       </tr>

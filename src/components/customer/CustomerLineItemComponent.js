@@ -2,12 +2,9 @@
 
 import React from 'react';
 import {
-  ListGroup,
-  ListGroupItem,
-  Badge,
   Button,
-  Container
 } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 require('../../styles/customer/CustomerLineItem.css');
@@ -23,9 +20,9 @@ class CustomerLineItemComponent extends React.Component {
   render() {
     return <tr className={"customerlineitem-component"}>
         <td>
-          <a href={"customer-show/" + this.state.customer.id}>
+          <Link to={"customer-show/" + this.state.customer.id}>
             {this.state.customer.name}
-          </a>
+          </Link>
         </td>
         <td>{this.state.customer.budget}</td>
         <td>{this.state.customer.address}</td>

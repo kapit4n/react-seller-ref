@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 require('../../styles/vendor/VendorLineItem.css');
 
 class VendorLineItemComponent extends React.Component {
@@ -14,7 +14,7 @@ class VendorLineItemComponent extends React.Component {
   render() {
     return (
       <tr className={'vendorlineitem-component'}>
-        <td><a href={'vendor-show/' + this.state.vendor.id}>{this.state.vendor.name}</a></td>
+        <td><Link to={'vendor-show/' + this.state.vendor.id}>{this.state.vendor.name}</Link></td>
         <td>{this.state.vendor.address}</td>
       </tr>
     );

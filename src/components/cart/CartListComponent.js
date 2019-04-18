@@ -2,13 +2,10 @@
 
 import React from "react";
 import {
-  ListGroup,
-  ListGroupItem,
-  Badge,
-  Button,
-  Container
+  ListGroup, ListGroupItem,
+  Badge, Button, Container
 } from "react-bootstrap";
-
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require("../../styles/cart/CartList.css");
@@ -62,9 +59,9 @@ class CartListComponent extends React.Component {
           <ListGroup>
             {this.state.orders.map(order => {
               return <ListGroupItem key={order.id}>
-                  <Button variant="info" href={"../cart-show/" + order.id}>
+                  <Link variant="info" to={"../cart-show/" + order.id}>
                     <FontAwesomeIcon icon="folder-open" />{" "}
-                  </Button>
+                  </Link>
                   <Button onClick={() => this.removeOrder(order.id)} variant="danger">
                     <FontAwesomeIcon icon="times" />{" "}
                   </Button>
