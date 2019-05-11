@@ -105,8 +105,8 @@ class ProductShowComponent extends React.Component {
               <ButtonToolbar>
                 <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit"/></Button>
                 <Button onClick = { this.handleRemove } variant="danger"><FontAwesomeIcon icon="times"/></Button>
-                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="plus"/>Add Stock</Button>
-                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="plus"/>Add to Cart</Button>
+                <Button onClick = { this.handleAddStock }><FontAwesomeIcon icon="plus"/>Stock</Button>
+                <Button onClick = { this.handleAddToCart }><FontAwesomeIcon icon="shopping-cart"/>Cart</Button>
               </ButtonToolbar>
               <span>Name: {this.state.product.name}</span>
               <ListGroup>
