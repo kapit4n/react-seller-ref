@@ -3,7 +3,7 @@
 import React from 'react';
 import $ from 'jquery'
 import { Table, Image, Button, Container, Row, Col } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';import ProductLineItemComponent from './ProductLineItemComponent';
+import { withRouter } from 'react-router-dom'; import ProductLineItemComponent from './ProductLineItemComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 require('../../styles/product/ProductList.css');
 
@@ -12,13 +12,13 @@ class ProductListComponent extends React.Component {
     super();
     this.productURL = 'http://localhost:3000/api/products';
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
-    this.state = { products: []};
+    this.state = { products: [] };
   }
 
   componentDidMount() {
-    fetch(this.productURL + '?access_token=' + this.access_token) 
+    fetch(this.productURL + '?access_token=' + this.access_token)
       .then((response) => response.json())
-      .then((responseJson) => { this.setState({products:responseJson});})
+      .then((responseJson) => { this.setState({ products: responseJson }); })
       .catch((error) => { console.error(error); });
     this.addPreviewEvent();
   }
@@ -41,8 +41,9 @@ class ProductListComponent extends React.Component {
     return (
       <div>
         <Container>
-          <Button onClick = { this.handleAdd }><FontAwesomeIcon icon="plus"/></Button>
-          <img id="preview" style={{width: 300, position: 'absolute', left: '30%', top: '15%'}}/>
+          <h1>Product List</h1>
+          <Button onClick={this.handleAdd}><FontAwesomeIcon icon="plus" /></Button>
+          <img id="preview" style={{ width: 300, position: 'absolute', left: '30%', top: '15%' }} />
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -53,12 +54,12 @@ class ProductListComponent extends React.Component {
             </thead>
             <tbody>
               {this.state.products.map(function (product) {
-                return  <ProductLineItemComponent key={product.id} product={product}/>;
-                })
+                return <ProductLineItemComponent key={product.id} product={product} />;
+              })
               }
             </tbody>
           </Table>
-          </Container>
+        </Container>
       </div>
     );
   }

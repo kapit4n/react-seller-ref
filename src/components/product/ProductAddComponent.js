@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-  
-import { Button, ButtonToolbar, FormGroup,  FormControl, Container } from 'react-bootstrap';
+
+import { Button, ButtonToolbar, FormGroup, FormControl, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle } from '@fortawesome/fontawesome-free-solid';
 
@@ -21,10 +21,10 @@ class ProductAddComponent extends React.Component {
             img: this.state.img
         };
         fetch(this.productURL + '?access_token=' + this.access_token, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
-                body: JSON.stringify(product)
-            }).then((response) => response.json())
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
+            body: JSON.stringify(product)
+        }).then((response) => response.json())
             .then((responseJson) => { this.props.history.push('/product-list'); })
             .catch((error) => { console.error(error); });
 
@@ -48,7 +48,7 @@ class ProductAddComponent extends React.Component {
     };
 
     componentDidMount() {
-        
+
     }
 
     handleChangeName = (event) => {
@@ -77,62 +77,63 @@ class ProductAddComponent extends React.Component {
 
     render() {
         return (
-          <div className = "productadd-component">
-            <Container>
-                <ButtonToolbar>
-                    <Button onClick = { this.handleClick }><FontAwesomeIcon icon={"check"} /></Button>
-                    <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> 
-                </ButtonToolbar>
-                <FormGroup controlId = "formName">
-                    <span> Name </span> <FormControl type = "text"
-                    placeholder = "Enter text"
-                    value = { this.state.name }
-                    onChange = { this.handleChangeName }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formCode">
-                    <span> Code </span> <FormControl type = "text"
-                    placeholder = "Enter text"
-                    value = { this.state.code }
-                    onChange = { this.handleChangeCode }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formPrice">
-                    <span> Price </span><FormControl type = "text"
-                    placeholder = "Enter text"
-                    value = { this.state.price }
-                    onChange = { this.handleChangePrice }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formImg">
-                    <span> Img </span> <FormControl type = "text"
-                    placeholder = "Enter text"
-                    value = { this.state.img }
-                    onChange = { this.handleChangeImg }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formStock">
-                    <span> Stock </span> <FormControl type = "text"
-                    placeholder = "Enter text"
-                    value = { this.state.stock }
-                    onChange = { this.handleChangeStock }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formDescription">
-                    <span> Description </span>
-                    <FormControl
-                    componentClass="textarea"
-                    type = "text"
-                    rows= "10"
-                    placeholder = "Enter text"
-                    value = { this.state.description }
-                    onChange = { this.handleChangeDescription }
-                    />
-                </FormGroup>
-                <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="check"/> </Button> <Button
-                onClick = { this.handleGoList }><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
-            </Container>
+            <div className="productadd-component">
+                <Container>
+                    <h1>Product Register</h1>
+                    <ButtonToolbar>
+                        <Button onClick={this.handleClick}><FontAwesomeIcon icon={"check"} /></Button>
+                        <Button onClick={this.handleGoList}><FontAwesomeIcon icon="list" /></Button>
+                    </ButtonToolbar>
+                    <FormGroup controlId="formName">
+                        <span> Name </span> <FormControl type="text"
+                            placeholder="Enter text"
+                            value={this.state.name}
+                            onChange={this.handleChangeName}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formCode">
+                        <span> Code </span> <FormControl type="text"
+                            placeholder="Enter text"
+                            value={this.state.code}
+                            onChange={this.handleChangeCode}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formPrice">
+                        <span> Price </span><FormControl type="text"
+                            placeholder="Enter text"
+                            value={this.state.price}
+                            onChange={this.handleChangePrice}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formImg">
+                        <span> Img </span> <FormControl type="text"
+                            placeholder="Enter text"
+                            value={this.state.img}
+                            onChange={this.handleChangeImg}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formStock">
+                        <span> Stock </span> <FormControl type="text"
+                            placeholder="Enter text"
+                            value={this.state.stock}
+                            onChange={this.handleChangeStock}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formDescription">
+                        <span> Description </span>
+                        <FormControl
+                            componentClass="textarea"
+                            type="text"
+                            rows="10"
+                            placeholder="Enter text"
+                            value={this.state.description}
+                            onChange={this.handleChangeDescription}
+                        />
+                    </FormGroup>
+                    <ButtonToolbar>
+                        <Button onClick={this.handleClick}><FontAwesomeIcon icon="check" /> </Button> <Button
+                            onClick={this.handleGoList}><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
+                </Container>
             </div>
         );
     }

@@ -1,91 +1,92 @@
 'use strict';
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';import {FieldGroup,  FormControl, FormGroup, HelpBlock, Container, ButtonToolbar, Button} from 'react-bootstrap'
+import { withRouter } from 'react-router-dom'; import { FieldGroup, FormControl, FormGroup, HelpBlock, Container, ButtonToolbar, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 require('../../styles/customer/CustomerAdd.css');
 
 class CustomerAddComponent extends React.Component {
-  constructor() {
-      super();
-      this.customerURL = 'http://localhost:3000/api/customers';
-      this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
-      this.state = { name: '', budget: '', address: ''};
-      this.handleChangeName = this.handleChangeName.bind(this);
-      this.handleChangeBudget = this.handleChangeBudget.bind(this);
-      this.handleChangeAddress = this.handleChangeAddress.bind(this);
-  };
+    constructor() {
+        super();
+        this.customerURL = 'http://localhost:3000/api/customers';
+        this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
+        this.state = { name: '', budget: '', address: '' };
+        this.handleChangeName = this.handleChangeName.bind(this);
+        this.handleChangeBudget = this.handleChangeBudget.bind(this);
+        this.handleChangeAddress = this.handleChangeAddress.bind(this);
+    };
 
-  handleChangeName = (event) => {
-      this.setState({ name: event.target.value });
-  }
+    handleChangeName = (event) => {
+        this.setState({ name: event.target.value });
+    }
 
-  handleChangeBudget = (event) => {
-      this.setState({ budget: event.target.value });
-  }
+    handleChangeBudget = (event) => {
+        this.setState({ budget: event.target.value });
+    }
 
-  handleChangeAddress = (event) => {
-      this.setState({ address: event.target.value });
-  }
+    handleChangeAddress = (event) => {
+        this.setState({ address: event.target.value });
+    }
 
-  handleOk = () => {
-      var product = {
-          name: this.state.name,
-          budget: this.state.budget,
-          address: this.state.address
-      };
-      fetch(this.customerURL + '?access_token=' + this.access_token, {
-              method: 'POST',
-              headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
-              body: JSON.stringify(product)
-          }).then((response) => response.json())
-          .then((responseJson) => { this.props.history.push('/customer-list'); })
-          .catch((error) => { console.error(error); });
+    handleOk = () => {
+        var product = {
+            name: this.state.name,
+            budget: this.state.budget,
+            address: this.state.address
+        };
+        fetch(this.customerURL + '?access_token=' + this.access_token, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
+            body: JSON.stringify(product)
+        }).then((response) => response.json())
+            .then((responseJson) => { this.props.history.push('/customer-list'); })
+            .catch((error) => { console.error(error); });
 
-  };
+    };
 
-  handleGoList = () => {
-      this.props.history.push('/customer-list');
-  };
+    handleGoList = () => {
+        this.props.history.push('/customer-list');
+    };
 
-  render() {
-    return (
-      <div className="customeradd-component">
-        <Container>
-                <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="check"/></Button>
-                <Button onClick = { this.handleGoList }><FontAwesomeIcon icon="list"/></Button> 
-                </ButtonToolbar>
-                <FormGroup controlId = "formName">
-                    <span> Name </span> <FormControl type = "text"
-                    placeholder = "Enter Customer Name"
-                    value = { this.state.name }
-                    onChange = { this.handleChangeName }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formBudget">
-                    <span> Budget </span>
-                    <FormControl type = "text"
-                    placeholder = "Enter Budget"
-                    value = { this.state.budget }
-                    onChange = { this.handleChangeBudget }
-                    />
-                </FormGroup>
-                <FormGroup controlId = "formAddress">
-                    <span> Address </span><FormControl type = "text"
-                    placeholder = "Enter Address"
-                    value = { this.state.address }
-                    onChange = { this.handleChangeAddress }
-                    />
-                </FormGroup>
-                <ButtonToolbar>
-                <Button onClick = { this.handleOk }><FontAwesomeIcon icon="check"/> </Button> <Button
-                onClick = { this.handleGoList }><FontAwesomeIcon icon="list"/></Button> </ButtonToolbar>
-            </Container>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="customeradd-component">
+                <Container>
+                    <h1>Customer Register</h1>
+                    <ButtonToolbar>
+                        <Button onClick={this.handleClick}><FontAwesomeIcon icon="check" /></Button>
+                        <Button onClick={this.handleGoList}><FontAwesomeIcon icon="list" /></Button>
+                    </ButtonToolbar>
+                    <FormGroup controlId="formName">
+                        <span> Name </span> <FormControl type="text"
+                            placeholder="Enter Customer Name"
+                            value={this.state.name}
+                            onChange={this.handleChangeName}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formBudget">
+                        <span> Budget </span>
+                        <FormControl type="text"
+                            placeholder="Enter Budget"
+                            value={this.state.budget}
+                            onChange={this.handleChangeBudget}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="formAddress">
+                        <span> Address </span><FormControl type="text"
+                            placeholder="Enter Address"
+                            value={this.state.address}
+                            onChange={this.handleChangeAddress}
+                        />
+                    </FormGroup>
+                    <ButtonToolbar>
+                        <Button onClick={this.handleOk}><FontAwesomeIcon icon="check" /> </Button> <Button
+                            onClick={this.handleGoList}><FontAwesomeIcon icon="list" /></Button> </ButtonToolbar>
+                </Container>
+            </div>
+        );
+    }
 }
 
 CustomerAddComponent.displayName = 'CustomerCustomerAddComponent';

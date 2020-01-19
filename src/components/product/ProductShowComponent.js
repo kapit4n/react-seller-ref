@@ -2,7 +2,11 @@
 
 import React from 'react';
 
-import { Container, ListGroup, ListGroupItem, Button, ButtonToolbar, Modal, Media, FormControl, Col, FormGroup, Image } from 'react-bootstrap';
+import {
+  Container, ListGroup, ListGroupItem,
+  Button, ButtonToolbar, Modal, Media,
+  FormControl, Col, Row, FormGroup, Image
+} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import AddingToShoppingCart from '../AddingToShoppingCart';
@@ -98,27 +102,37 @@ class ProductShowComponent extends React.Component {
 
     return (
       <div className="productshow-component">
+        <h1>Product Info</h1>
         <Container>
-          <Media>
-            <Media>
-              <img style={{ clip: 'rect(0px,350px,200px,0px)', position: 'relative' }} width={350} src={this.state.product.img} alt="Image" />
-            </Media>
-            <Media.Body>
-              <ButtonToolbar>
-                <Button onClick={this.handleClick}><FontAwesomeIcon icon="edit" /></Button>
-                <Button onClick={this.handleRemove} variant="danger"><FontAwesomeIcon icon="times" /></Button>
-                <Button onClick={this.handleAddStock}><FontAwesomeIcon icon="plus" />Stock</Button>
-                <Button onClick={this.handleAddToCart}><FontAwesomeIcon icon="shopping-cart" />Cart</Button>
-              </ButtonToolbar>
-              <span>Name: {this.state.product.name}</span>
-              <ListGroup>
-                <ListGroupItem><h4 style={{ display: 'inline' }}>Code: </h4>{this.state.product.code}</ListGroupItem>
-                <ListGroupItem><h4 style={{ display: 'inline' }}>Stock: </h4>{this.state.product.stock}</ListGroupItem>
-                <ListGroupItem><h4 style={{ display: 'inline' }}>Price: </h4>{this.state.product.price}</ListGroupItem>
-              </ListGroup>
-              <p>{this.state.product.description}</p>
-            </Media.Body>
-          </Media>
+          <Row className="show-Container">
+            <Col xs={12} sm={12} md={5}>
+              <Media style={{ paddingBottom: '1rem' }}>
+                <img style={{ clip: 'rect(0px,330px,200px,0px)', position: 'relative' }} width={330} src={this.state.product.img} alt="Image" />
+              </Media>
+            </Col>
+            <Col xs={12} sm={12} md={7}>
+              <Media>
+                <Media.Body>
+                  <ButtonToolbar>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleClick}><FontAwesomeIcon icon="edit" /></Button>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleRemove} variant="danger"><FontAwesomeIcon icon="times" /></Button>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleAddStock}><FontAwesomeIcon icon="plus" />Stock</Button>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleAddToCart}><FontAwesomeIcon icon="shopping-cart" />Cart</Button>
+                  </ButtonToolbar>
+                  <span>Name: {this.state.product.name}</span>
+                  <ListGroup>
+                    <ListGroupItem><h4 style={{ display: 'inline' }}>Code: </h4>{this.state.product.code}</ListGroupItem>
+                    <ListGroupItem><h4 style={{ display: 'inline' }}>Stock: </h4>{this.state.product.stock}</ListGroupItem>
+                    <ListGroupItem><h4 style={{ display: 'inline' }}>Price: </h4>{this.state.product.price}</ListGroupItem>
+                  </ListGroup>
+                  <p>{this.state.product.description}</p>
+                </Media.Body>
+              </Media>
+            </Col>
+          </Row>
+
+
+
         </Container>
 
         <Modal show={this.state.show} onHide={closeStock} container={this} aria-labelledby="contained-modal-title">

@@ -1,7 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { Media, Container, ListGroup, ListGroupItem, Button, ButtonToolbar } from 'react-bootstrap';
+import {
+  Media, Container, ListGroup, ListGroupItem,
+  Button, ButtonToolbar, Col, Row
+} from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -13,7 +16,7 @@ class VendorShowComponent extends React.Component {
     this.vendorURL = 'http://localhost:3000/api/vendors/';
     this.access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
     this.props = props;
-    this.state = { vendor : {}};
+    this.state = { vendor: {} };
   }
 
   handleClick = () => {
@@ -25,14 +28,14 @@ class VendorShowComponent extends React.Component {
       method: 'DELETE',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', }
     }).then((response) => response.json())
-    .then((responseJson) => { this.props.history.push('/vendor-list');})
-    .catch((error) => { console.error(error);});
+      .then((responseJson) => { this.props.history.push('/vendor-list'); })
+      .catch((error) => { console.error(error); });
   };
 
   componentDidMount() {
-    fetch(this.vendorURL + this.props.match.params.id + '?access_token=' + this.access_token) 
+    fetch(this.vendorURL + this.props.match.params.id + '?access_token=' + this.access_token)
       .then((response) => response.json())
-      .then((responseJson) => { this.setState({vendor: responseJson});})
+      .then((responseJson) => { this.setState({ vendor: responseJson }); })
       .catch((error) => { console.error(error); });
   }
 
@@ -40,22 +43,28 @@ class VendorShowComponent extends React.Component {
     return (
       <div className="vendorshow-component">
         <Container>
-          <Media>
-            <Media>
-              <img style={{clip: 'rect(0px,350px,200px,0px)', position: 'relative'}} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image"/>
-            </Media>
-            <Media.Body>
-              <ButtonToolbar>
-                <Button onClick = { this.handleClick }><FontAwesomeIcon icon="edit" /></Button>
-                <Button onClick = { this.handleRemove }><FontAwesomeIcon icon="window-close" /></Button>
-              </ButtonToolbar>
-              <span>Name: {this.state.vendor.name}</span>
-              <ListGroup>
-                <ListGroupItem><h4 style={{display: 'inline'}}>Address: </h4>{this.state.vendor.address}</ListGroupItem>
-              </ListGroup>
-              <p>{this.state.vendor.description}</p>
-            </Media.Body>
-          </Media>
+          <Row className="show-Container">
+            <Col xs={12} sm={12} md={5}>
+              <Media>
+                <img style={{ clip: 'rect(0px,350px,200px,0px)', position: 'relative' }} width={350} src="https://i1.wp.com/onsunnyslopefarm.com/wp-content/uploads/2016/12/vendor-booth-10x20_4f317de637994db6183bdc59a72cee30.jpeg" alt="Image" />
+              </Media>
+            </Col>
+            <Col>
+              <Media>
+                <Media.Body>
+                  <ButtonToolbar>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleClick}><FontAwesomeIcon icon="edit" /></Button>
+                    <Button style={{ marginRight: '0.5rem' }} onClick={this.handleRemove}><FontAwesomeIcon icon="window-close" /></Button>
+                  </ButtonToolbar>
+                  <span>Name: {this.state.vendor.name}</span>
+                  <ListGroup>
+                    <ListGroupItem><h4 style={{ display: 'inline' }}>Address: </h4>{this.state.vendor.address}</ListGroupItem>
+                  </ListGroup>
+                  <p>{this.state.vendor.description}</p>
+                </Media.Body>
+              </Media>
+            </Col>
+          </Row>
         </Container>
       </div>
     );
