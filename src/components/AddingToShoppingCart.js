@@ -2,7 +2,37 @@ import React from 'react';
 import { Container, Row, Col, Image, Button, Modal, FormGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-function AddingToShoppingCart({ closeItemOnCart, quantity, product, show, handleChangeQuantity, container, saveItemOnCart }) {
+function AddingToShoppingCart({ closeItemOnCart, quantity, product, show, handleChangeQuantity,
+    container, loadCurrentCartTotal, eventSubscriptors }) {
+
+
+    const productURL = 'http://localhost:3000/api/products';
+    const orderURL = 'http://localhost:3000/api/orderDetails';
+
+    const access_token = 'T4SH5NkUULeFPSLEXhycyMvt0HMNINxTdOvYjGzGZkxvMmKZeJbne4TdJfcDLAr7';
+
+
+    const saveItemOnCart = () => {
+        let item = {
+            quantity,
+            price: product.price,
+            totalPrice: product.price * quantity,
+            discount: 0,
+            product: { id: product.id }
+        };
+
+        fetch(orderURL + '?access_token=' + access_token, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', },
+            body: JSON.stringify(item)
+        }).then((response) => {
+            loadCurrentCartTotal();
+            return response.json()
+        })
+            .then((responseJson) => { eventSubscriptors(); })
+            .catch((error) => { console.error(error); });
+    }
+
     return <Modal show={show} onHide={closeItemOnCart} container={container} aria-labelledby="contained-modal-title">
         <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">Adding to Shopping Cart</Modal.Title>

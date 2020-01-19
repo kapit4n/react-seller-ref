@@ -73,7 +73,7 @@ class HomeComponent extends React.Component {
     this.loadCurrentCartTotal();
   }
 
-  loadCurrentCartTotal() {
+  loadCurrentCartTotal = () => {
     fetch(this.orderURL + '/currentTotal?' + 'access_token=' + this.access_token)
       .then((response) => {
         return response.json();
@@ -146,7 +146,10 @@ class HomeComponent extends React.Component {
           </Row>
         </Container>
 
-        <AddingToShoppingCart quantity={this.quantity} container={this} saveItemOnCart={saveItemOnCart} product={this.state.product} handleChangeQuantity={this.handleChangeQuantity} show={this.state.show} />
+        <AddingToShoppingCart closeItemOnCart={closeItemOnCart} quantity={this.state.quantity}
+          container={this} loadCurrentCartTotal={this.loadCurrentCartTotal} product={this.state.product}
+          handleChangeQuantity={this.handleChangeQuantity} show={this.state.show} eventSubscriptors={this.eventSubscriptors}
+          />
 
       </div>
     );
