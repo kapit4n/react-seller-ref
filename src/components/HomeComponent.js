@@ -1,9 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Modal, FormGroup, FormControl, Nav } from 'react-bootstrap';
+import { Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
+
+import AddingToShoppingCart from './AddingToShoppingCart'
 
 require('../styles/Home.css');
 
@@ -144,32 +146,7 @@ class HomeComponent extends React.Component {
           </Row>
         </Container>
 
-        <Modal show={this.state.show} onHide={closeItemOnCart} container={this} aria-labelledby="contained-modal-title">
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Adding to Shopping Cart</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Container>
-              <Row className="show-Container">
-                <Col xs={9} sm={9} md={6} height={60}>
-                  <h2>{this.state.product.name}</h2><br />
-                  <Image width={300} src={this.state.product.img} thumbnail /><br />
-                  <span> Price: </span>${this.state.product.price} <br />
-                  <span> Stock: </span>{this.state.product.stock} <br />
-                  ${this.state.product.description}
-                </Col>
-              </Row>
-            </Container>
-            <FormGroup controlId="formCode">
-              <span>Quantity</span>
-              <FormControl type="text" placeholder="Enter quantity"
-                value={this.state.quantity} onChange={this.handleChangeQuantity} />
-            </FormGroup>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={saveItemOnCart}><FontAwesomeIcon icon="check" /></Button>
-          </Modal.Footer>
-        </Modal>
+        <AddingToShoppingCart quantity={this.quantity} container={this} saveItemOnCart={saveItemOnCart} product={this.state.product} handleChangeQuantity={this.handleChangeQuantity} show={this.state.show} />
 
       </div>
     );
