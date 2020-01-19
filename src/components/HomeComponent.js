@@ -1,7 +1,10 @@
 'use strict';
 
 import React from 'react';
-import { Container, OverlayTrigger, Tooltip, Row, Col, Image, Button, ButtonToolbar, Nav } from 'react-bootstrap';
+import { 
+  Container, OverlayTrigger, Tooltip, 
+  Row, Col, Image, Button, ButtonToolbar, 
+  Nav, Form, FormGroup, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
@@ -117,6 +120,12 @@ class HomeComponent extends React.Component {
     return (
       <div className="home-component">
         <Container>
+          <Form style={{ display: 'flex' }}>
+            <FormGroup>
+              <FormControl type="text" placeholder="Search" value={this.state.searchText} onChange={this.handleChangeSearchText} />
+            </FormGroup>
+            <button class="btn" onClick={() => this.search()}><i class="fa fa-search"></i></button>
+          </Form>
           <Nav>
             <Nav.Item> <Link to="/cart-current"><FontAwesomeIcon icon="shopping-cart" />Cart(${this.state.currentTotal})</Link></Nav.Item>
           </Nav>
@@ -149,7 +158,7 @@ class HomeComponent extends React.Component {
         <AddingToShoppingCart closeItemOnCart={closeItemOnCart} quantity={this.state.quantity}
           container={this} loadCurrentCartTotal={this.loadCurrentCartTotal} product={this.state.product}
           handleChangeQuantity={this.handleChangeQuantity} show={this.state.show} eventSubscriptors={this.eventSubscriptors}
-          />
+        />
 
       </div>
     );

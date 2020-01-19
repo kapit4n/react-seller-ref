@@ -146,7 +146,7 @@ class ProductShowComponent extends React.Component {
                   <lspan> Current Stock: </lspan>{this.state.product.stock} <br />
                   <FormGroup controlId="formCode">
                     <lspan>Quantity</lspan>
-                    <FormControl type="text" placeholder="Enter quantity"
+                    <FormControl type="number" placeholder="Enter quantity"
                       value={this.state.quantity} onChange={this.handleChangeQuantity} />
                   </FormGroup>
                 </Col>
