@@ -131,7 +131,7 @@ class HomeComponent extends React.Component {
           </Nav>
           <Row className="show-Container">
             {this.state.products.map(function (product) {
-              return <Col key={product.id} xs={12} md={3} height={350} style={cartContainerPadding}>
+              return <Col key={product.id} xs={12} md={4} height={350} style={cartContainerPadding}>
                 <div style={cartImageContainer}>
                   <OverlayTrigger
                     placement="right-start"
@@ -142,7 +142,7 @@ class HomeComponent extends React.Component {
                     </Tooltip>
                     }
                   >
-                    <Image src={product.img} thumbnail style={{ height: '180px', width: '276px' }} />
+                    <Image src={product.img} thumbnail style={{ height: '180px', width: '19rem' }} />
                   </OverlayTrigger>
                 </div>
                 <Link to={'product-show/' + product.id}>{product.name}</Link><br />
