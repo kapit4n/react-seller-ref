@@ -55,7 +55,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Navbar>
+        <Navbar bg="light" expand="lg">
           <Navbar.Brand>
             <Link to="/home">React-Seller</Link>
           </Navbar.Brand>
@@ -63,7 +63,7 @@ class App extends React.Component {
           <Navbar.Collapse>
             <Nav>
               <NavDropdown title="Products" id="basic-nav-dropdown">
-                <Nav.Item ><Link to="/product-list">List</Link></Nav.Item>
+                <Nav.Item ></Nav.Item>
                 <Nav.Item> <Link to="/product-add">New </Link></Nav.Item>
               </NavDropdown>
               <NavDropdown title="Customers" id="basic-nav-dropdown">
