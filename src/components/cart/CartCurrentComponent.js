@@ -60,10 +60,10 @@ class CartCurrentComponent extends React.Component {
     };
     fetch(
       this.orderDetailUrl +
-        "/" +
-        this.state.detailEdit.id +
-        "?access_token=" +
-        this.access_token,
+      "/" +
+      this.state.detailEdit.id +
+      "?access_token=" +
+      this.access_token,
       {
         method: "PUT",
         headers: {
@@ -84,80 +84,80 @@ class CartCurrentComponent extends React.Component {
   };
 
   submitCart = () => {
-      var thisAux = this;
-      var date = new Date();
-      let order = {
-          createdDate: date.toString(),
-          deliveryDate: date.toString(),
-          description: "Submitted Order",
-          customerId: this.state.customerId,
-          paid: false,
-          delivered: false,
-          total: this.state.totalPrice
-      };
-      fetch(this.orderUrl + "?access_token=" + this.access_token, {
-              method: "POST",
-              headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify(order)
-          })
-          .then(response => response.json())
-          .then(orderSaved => {
+    var thisAux = this;
+    var date = new Date();
+    let order = {
+      createdDate: date.toString(),
+      deliveryDate: date.toString(),
+      description: "Submitted Order",
+      customerId: this.state.customerId,
+      paid: false,
+      delivered: false,
+      total: this.state.totalPrice
+    };
+    fetch(this.orderUrl + "?access_token=" + this.access_token, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json())
+      .then(orderSaved => {
 
-              var orderDetailUrls = thisAux.state.orderDetails.map(function(orderDetail) {
-                  orderDetail.orderId = orderSaved.id;
-                  return {
-                      url: thisAux.orderDetailUrl +
-                          "/" +
-                          orderDetail.id +
-                          "?access_token=" +
-                          thisAux.access_token,
-                      orderDetail: orderDetail
-                  };
+        var orderDetailUrls = thisAux.state.orderDetails.map(function (orderDetail) {
+          orderDetail.orderId = orderSaved.id;
+          return {
+            url: thisAux.orderDetailUrl +
+              "/" +
+              orderDetail.id +
+              "?access_token=" +
+              thisAux.access_token,
+            orderDetail: orderDetail
+          };
+        });
+
+        var updateStockUrls = thisAux.state.orderDetails.map(function (orderDetail) {
+          return {
+            url: thisAux.updateStockUrl +
+              "?id=" +
+              orderDetail.product.id + "&amount=" + orderDetail.quantity +
+              "&access_token=" +
+              thisAux.access_token
+          };
+        });
+
+        Promise.all(orderDetailUrls.map(urlObj => fetch(urlObj.url, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(urlObj.orderDetail)
+        })))
+          .then(resp => resp).then(details => {
+            thisAux.state.successMessage = 'Cart was submited';
+            thisAux.state = {
+              orderDetails: [],
+              customers: [],
+              totalPrice: 0,
+              customerId: 0,
+              detailEdit: { product: {}, quantity: 0 }
+            };
+            Promise.all(updateStockUrls.map(updateObj => fetch(updateObj.url)))
+              .then(resp => resp).then(results => {
+                console.log(results);
+                thisAux.props.router.push('/cart-show/' + orderSaved.id);
+              })
+              .catch(error => {
+                console.error(error);
               });
-
-              var updateStockUrls = thisAux.state.orderDetails.map(function(orderDetail) {
-                  return {
-                      url: thisAux.updateStockUrl +
-                          "?id=" +
-                          orderDetail.product.id + "&amount=" + orderDetail.quantity +
-                          "&access_token=" +
-                          thisAux.access_token
-                  };
-              });
-
-              Promise.all(orderDetailUrls.map(urlObj => fetch(urlObj.url, {
-                      method: "PUT",
-                      headers: {
-                          Accept: "application/json",
-                          "Content-Type": "application/json"
-                      },
-                      body: JSON.stringify(urlObj.orderDetail)
-                  })))
-                  .then(resp => resp).then(details => {
-                      thisAux.state.successMessage = 'Cart was submited';
-                      thisAux.state = {
-                          orderDetails: [],
-                          customers: [],
-                          totalPrice: 0,
-                          customerId: 0,
-                          detailEdit: { product: {}, quantity: 0 }
-                      };
-                    Promise.all(updateStockUrls.map(updateObj => fetch(updateObj.url)))
-                    .then(resp => resp).then(results => {
-                        console.log(results);
-                        thisAux.props.router.push('/cart-show/' + orderSaved.id);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-                  });
-          })
-          .catch(error => {
-              console.error(error);
           });
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
 
   };
@@ -165,10 +165,10 @@ class CartCurrentComponent extends React.Component {
     for (var i = 0; i < this.state.orderDetails.length; i++) {
       fetch(
         this.orderDetailUrl +
-          "/" +
-          this.state.orderDetails[i].id +
-          "?access_token=" +
-          this.access_token,
+        "/" +
+        this.state.orderDetails[i].id +
+        "?access_token=" +
+        this.access_token,
         {
           method: "DELETE",
           headers: {
@@ -251,25 +251,24 @@ class CartCurrentComponent extends React.Component {
           <Link to={"/cart-list/"}>list</Link>{" "}
         </div>
         <Form>
-        <Form.Group controlId="formControlsSelect">
-          <span>Select Customer</span>
-          <Form.Control as="select" placeholder="select" value = { this.state.customerId }
-                    onChange = { this.handleChangeCustomerId }>
-          {this.state.customers.map(function(customer) {
-            return (
-                <option value={customer.id} key={customer.id}>{customer.name}</option>
+          <Form.Group controlId="formControlsSelect">
+            <span>Select Customer</span>
+            <Form.Control as="select" placeholder="select" value={this.state.customerId}
+              onChange={this.handleChangeCustomerId}>
+              {this.state.customers.map(function (customer) {
+                return (
+                  <option value={customer.id} key={customer.id}>{customer.name}</option>
                 );
-          }, this)}
-          </Form.Control>
-        </Form.Group>
+              }, this)}
+            </Form.Control>
+          </Form.Group>
           <Table striped bordered condensed="true" hover>
             <thead>
               <tr>
                 <th>Code</th>
-                <th>Quantity</th>
+                <th>Qty</th>
                 <th>Price</th>
                 <th>Total</th>
-                <th>Image</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -280,30 +279,27 @@ class CartCurrentComponent extends React.Component {
               </tr>
             </tfoot>
             <tbody>
-              {this.state.orderDetails.map(function(detail) {
+              {this.state.orderDetails.map(function (detail) {
                 return (
                   <tr className={"detailRow"} key={detail.id}>
                     <td>
                       <Link to={"/product-show/" + detail.product.id}>
-                        {detail.product.id}
+                        {detail.product.name}
                       </Link>
                     </td>
                     <td>{detail.quantity}</td>
                     <td>${detail.price}</td>
                     <td>${detail.totalPrice}</td>
                     <td>
-                      <Image src={detail.product.img} thumbnail width={100} />
-                    </td>
-                    <td>
-                      <Button variant="danger" onClick={() => this.removeItem(detail.id)} >
-                        {" "}
-                        <FontAwesomeIcon icon="times" />
-                        {" "}
-                      </Button>
-                      <Button onClick={() => this.handleEditItem(detail)}>
-                        {" "}
-                        <FontAwesomeIcon icon="edit" />{" "}
-                      </Button>
+                      <div style={{ display: 'flex' }}>
+                        <Button size="sm" style={{ marginRight: '0.5rem' }} className="btn btn" variant="danger" onClick={() => this.removeItem(detail.id)} >
+                          <FontAwesomeIcon icon="times" />
+                        </Button>
+                        <Button size="sm" onClick={() => this.handleEditItem(detail)}>
+                          <FontAwesomeIcon icon="edit" />{" "}
+                        </Button>
+
+                      </div>
                     </td>
                   </tr>
                 );
