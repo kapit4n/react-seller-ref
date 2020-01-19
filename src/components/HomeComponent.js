@@ -121,7 +121,7 @@ class HomeComponent extends React.Component {
       <div className="home-component">
         <Container>
           <Form style={{ display: 'flex' }}>
-            <FormGroup>
+            <FormGroup style={{width: '100%'}}>
               <FormControl type="text" placeholder="Search" value={this.state.searchText} onChange={this.handleChangeSearchText} />
             </FormGroup>
             <button class="btn" onClick={() => this.search()}><i class="fa fa-search"></i></button>
@@ -131,7 +131,7 @@ class HomeComponent extends React.Component {
           </Nav>
           <Row className="show-Container">
             {this.state.products.map(function (product) {
-              return <Col key={product.id} xs={6} md={4} height={350} style={cartContainerPadding}>
+              return <Col key={product.id} xs={12} md={3} height={350} style={cartContainerPadding}>
                 <div style={cartImageContainer}>
                   <OverlayTrigger
                     placement="right-start"
